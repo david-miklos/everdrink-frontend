@@ -1,3 +1,4 @@
+/*
 import { Injectable } from '@angular/core';
 import { Router, RouterStateSnapshot, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -26,3 +27,4 @@ export class AnonymGuard implements CanActivate {
 			);
 		}
 }
+*/

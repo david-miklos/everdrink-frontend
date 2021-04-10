@@ -1,3 +1,4 @@
+/*
 // EZ CSAK MINTA! (újra kell írni)
 
 import { Injectable } from '@angular/core';
@@ -159,3 +160,4 @@ export class AuthService {
 	}
 
 }
+*/

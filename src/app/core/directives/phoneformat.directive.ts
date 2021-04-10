@@ -1,21 +1,23 @@
-import { Directive, HostListener } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import {Directive, HostListener} from '@angular/core';
+import {NgControl} from '@angular/forms';
 
-import { format } from 'libphonenumber-js';
+import {format} from 'libphonenumber-js';
 
 @Directive({
-	selector: '[appPhoneFormat]'
+  selector: '[appPhoneFormat]'
 })
 export class PhoneFormatDirective {
 
-	constructor(
-		private control: NgControl
-	) { }
+  constructor(
+    private control: NgControl
+  ) {
+  }
 
-	@HostListener('input',['$event']) onEvent() {
-		let str: string = this.control.value;
-		if (str = format(str, 'International'))
-			this.control.control.setValue(str);
-	}
+  @HostListener('input', ['$event']) onEvent(): any {
+    let str: string = this.control.value;
+    if (str = format(str, 'International')) {
+      this.control.control.setValue(str);
+    }
+  }
 
 }

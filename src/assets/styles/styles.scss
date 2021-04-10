@@ -3,23 +3,24 @@
 /* --------------- Basic layout --------------- */
 
 html {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	-webkit-font-smoothing: subpixel-antialiased;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
+
 body {
-	width: 100%;
-	height: 100%;
-	min-width: 320px;
-	margin: 0;
-	padding: 0;
-	background-color: #fff;
-	font-family: Sans-Serif;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.5;
-	color: #000;
-	text-decoration: none;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: Sans-Serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  text-decoration: none;
 }
