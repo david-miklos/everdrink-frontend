@@ -1,1 +1,42 @@
-<p>header works!</p>
+<!-- <p>header works!</p> -->
+
+<mat-toolbar color="primary">
+  <div class="example-button-container">
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a home icon"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+  <span class="everdrink-text">EVER DRINK</span>
+  <div class="product-button-container">
+    <button
+      [routerLink]="['category']"
+      routerLinkActive="router-link-active"
+      mat-stroked-button
+      color="accent"
+    >
+      Termékek
+    </button>
+  </div>
+  <!-- <ng-container *ngIf="isShowProductBar">
+      <app-productbar></app-productbar>
+    </ng-container>   -->
+  <span class="example-spacer"></span>
+  <app-menu></app-menu>
+  <button
+  mat-icon-button
+  [routerLink]="['cart']"
+  routerLinkActive="router-link-active"
+  class="cart-icon"
+  aria-label="Icon button with a cart one icon"
+  >
+  <!-- use badge for cart -->
+    <mat-icon [matBadge]="content" [matBadgeHidden]="hidden" matBadgeColor="accent">shopping_cart</mat-icon>
+  </button>
+
+</mat-toolbar>

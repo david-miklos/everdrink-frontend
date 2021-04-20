@@ -1,1 +1,26 @@
-<p>menu works!</p>
+<!-- <p>menu works!</p> -->
+<button
+  mat-icon-button
+  class="account-icon"
+  aria-label="Example icon-button with share icon"
+  [matMenuTriggerFor]="account"
+>
+  <mat-icon>account_circle</mat-icon>
+</button>
+<!-- Transfer the menu in the menu component -->
+<mat-menu #account="matMenu">
+  <button
+    mat-menu-item
+    [routerLink]="['/signup']"
+    routerLinkActive="router-link-active"
+  >
+    Sign Up
+  </button>
+  <button
+    mat-menu-item
+    [routerLink]="['/signin']"
+    routerLinkActive="router-link-active"
+  >
+    Sign In
+  </button>
+</mat-menu>

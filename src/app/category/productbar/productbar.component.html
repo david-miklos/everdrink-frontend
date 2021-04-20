@@ -1,0 +1,14 @@
+<div class="productbar">
+  <mat-toolbar color="primary" class="flexSpaceBetween">
+      <div *ngFor="let category of categoryService.categories">
+        <button
+          mat-stroked-button
+          color="accent"
+          [routerLink]="['./', category.name]"
+          routerLinkActive="router-link-active"
+        >
+          {{ category.display_name }}
+        </button>
+      </div>
+  </mat-toolbar>
+</div>

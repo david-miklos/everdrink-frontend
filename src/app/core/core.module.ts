@@ -1,12 +1,12 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-
-import {FirestoreService} from '@core/services/firestore.service';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NotificationService } from './services/notification.service';
+import { AuthService } from './services/auth.service';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule],
-  providers: [FirestoreService]
+  providers: [AuthService, NotificationService, CategoryService],
 })
-export class CoreModule {
-}
+export class CoreModule {}

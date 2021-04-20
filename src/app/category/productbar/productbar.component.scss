@@ -1,15 +1,8 @@
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 1;
 }
-span.everdrink-text {
-  margin-left: 10px;
-  margin-right: -10px;
-}
-.mat-flat-button.mat-warn,
-.mat-raised-button.mat-warn,
-.mat-fab.mat-warn,
-.mat-mini-fab.mat-warn {
-  background-color: #5cbdea;
+.flexSpaceBetween {
+  justify-content: space-between;
 }
 button.mat-focus-indicator.mat-stroked-button.mat-button-base.mat-accent {
   width: 120px;
@@ -22,6 +15,7 @@ button.mat-focus-indicator.mat-stroked-button.mat-button-base.mat-accent {
 
 }
 button.mat-focus-indicator.mat-stroked-button.mat-button-base.mat-accent:hover {
+  // background-color: #ce1471;
   background-color: #38448b;
 }
 .product-button-container {
@@ -33,7 +27,3 @@ button.mat-focus-indicator.mat-stroked-button.mat-button-base.mat-accent:hover {
   // color: white;
   // transition-duration: 0.5s;
 }
-// app-productbar { 
-//   position: absolute;
-//   transform: translateY(64px);
-// }

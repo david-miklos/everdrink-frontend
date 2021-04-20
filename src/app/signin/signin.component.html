@@ -1,1 +1,27 @@
-<p>signin works!</p>
+<form
+  [formGroup]="signinForm"
+  fxLayout="column"
+  fxLayoutAlign="space-evenly center"
+  fxLayoutGap="10px"
+  (ngSubmit)="signin(signinForm)"
+  novalidate
+>
+  <mat-form-field appearance="outline">
+    <mat-label>Az Ön e-mail címe</mat-label>
+    <input matInput type="email" formControlName="email" required />
+    <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
+    <mat-error>Adja meg a regisztráció során használt E-mail címét!</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Választott jelszava</mat-label>
+    <input
+      matInput
+      #password
+      type="password"
+      formControlName="password"
+      required
+    />
+    <mat-error>Jelszó kitöltése kötelező!</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="accent">Belépés</button>
+</form>

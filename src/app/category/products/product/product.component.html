@@ -1,0 +1,30 @@
+<div class="card">
+  <mat-card class="product-card">
+    <img 
+      mat-card-image
+      src="/assets/mockups/beer.mockup.jpg"
+      alt="Photo of a beer bottle"
+    />
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="center center" class="content">
+        <h3>{{ product.brand }}</h3>
+        <h4>{{ product.name }}</h4>
+        <b>{{ product.gross_price | number }} Ft</b>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="cart-button-container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="button">
+          <button
+            mat-mini-fab
+            color="accent"
+            aria-label="Icon button with a cart one icon"
+            (click)="addToCart()"
+          >
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

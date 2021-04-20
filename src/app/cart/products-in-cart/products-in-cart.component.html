@@ -1,0 +1,5 @@
+<div class="content">
+  <div *ngFor="let product of cartService.products$ | async">
+    <app-product-in-cart [product]="product"></app-product-in-cart>
+  </div>
+</div>
