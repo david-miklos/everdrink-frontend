@@ -1,8 +1,9 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, DoCheck, Input, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '@core/services/cart.service';
+import { CartSelectors } from '@core/selectors';
+import { AppState } from '@core/states/app.state';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +15,11 @@ export class HeaderComponent implements OnInit, DoCheck {
   @Input('matBadge') content: string | number | undefined | null;
   // tslint:disable-next-line:no-input-rename
   @Input('matBadgeHidden') hidden = true;
+  public count$: Observable<number>;
 
-  constructor(public cartService: CartService, private router: Router) {}
+  constructor(public store: Store<AppState>, private router: Router) {
+    this.count$ = store.pipe(select(CartSelectors.selectCount));
+  }
 
   ngOnInit(): void {}
 
@@ -24,8 +28,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.hidden = true;
       return;
     }
-    this.content = this.cartService.products$.getValue().length;
-    if (this.cartService.products$.getValue().length > 0) {
+    this.count$.subscribe((count: number) => (this.content = count));
+    if (this.content > 0) {
       this.hidden = false;
     }
   }

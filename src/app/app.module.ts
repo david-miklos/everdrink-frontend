@@ -4,31 +4,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
-import {MatExpansionModule} from '@angular/material/expansion';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
-
 import { formReducer } from '@core/reducers/form.reducer';
-import { ConnectFormDirective } from '@core/directives/connectform.directive';
+// import { ConnectFormDirective } from '@core/directives/connectform.directive';
 import { NameFormatDirective } from '@core/directives/nameformat.directive';
 import { PhoneFormatDirective } from '@core/directives/phoneformat.directive';
 import { ObjectToArrayPipe } from '@core/pipes/objecttoarray.pipe';
 import { PhoneFormatPipe } from '@core/pipes/phoneformat.pipe';
-import { DatePipe } from '@angular/common';
-
 import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
@@ -49,10 +44,23 @@ import { CartComponent } from './cart/cart.component';
 import { ProductsInCartComponent } from './cart/products-in-cart/products-in-cart.component';
 import { ProductInCartComponent } from './cart/products-in-cart/product-in-cart/product-in-cart.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ROOT_REDUCERS } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['cart'], rehydrate: true })(reducer);
+  // return localStorageSync({ keys: ['cart'] })(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
-    ConnectFormDirective,
+    // ConnectFormDirective,
     NameFormatDirective,
     PhoneFormatDirective,
     ObjectToArrayPipe,
@@ -75,6 +83,7 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
     CartComponent,
     ProductsInCartComponent,
     ProductInCartComponent,
+    CartDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,20 +92,50 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    StoreModule.forRoot({
-      forms: formReducer,
+    // StoreModule.forRoot({
+    //   forms: formReducer,
+    // }),
+    /**
+     * StoreModule.forRoot is imported once in the root module, accepting a reducer
+     * function or object map of reducer functions. If passed an object of
+     * reducers, combineReducers will be run creating your application
+     * meta-reducer. This returns all providers for an @ngrx/store
+     * based application.
+     */
+    StoreModule.forRoot(ROOT_REDUCERS, { metaReducers }),
+
+    /**
+     * @ngrx/router-store keeps router state up-to-date in the store.
+     */
+    StoreRouterConnectingModule.forRoot(),
+
+    /**
+     * Store devtools instrument the store retaining past versions of state
+     * and recalculating new states. This enables powerful time-travel
+     * debugging.
+     *
+     * To use the debugger, install the Redux Devtools extension for either
+     * Chrome or Firefox
+     *
+     * See: https://github.com/zalmoxisus/redux-devtools-extension
+     */
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx EverDrink - B2B App',
+
+      // In a production build you would want to disable the Store Devtools
+      // logOnly: environment.production,
     }),
     MatCardModule,
     MatIconModule,
     MatButtonModule,
     MatBadgeModule,
-    MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,
     AppRoutingModule,
     FlexLayoutModule,
     MatGridListModule,
     MatToolbarModule,
+    MatFormFieldModule,
     MatMenuModule,
     MatPasswordStrengthModule,
     MatExpansionModule,

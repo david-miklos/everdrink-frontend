@@ -1,10 +1,10 @@
 <div class="card">
   <mat-card class="product-card">
-    <img
-    mat-card-image
-    src="/assets/mockups/beer.mockup.jpg"
-    alt="Photo of a product"
-  />
+    <img 
+      mat-card-image
+      src="/assets/mockups/beer.mockup.jpg"
+      alt="Photo of a beer bottle"
+    />
     <mat-card-content>
       <div fxLayout="column" fxLayoutAlign="center center" class="content">
         <h3>{{ product.brand }}</h3>
@@ -20,9 +20,9 @@
           color="warn"
           aria-label="Icon button with a cart one icon"
           (click)="removeFromCart()"
-        >
+          >
           <mat-icon>remove_shopping_cart</mat-icon>
-        </button>
+          </button>
         </div>
       </div>
     </mat-card-actions>

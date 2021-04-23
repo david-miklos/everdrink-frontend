@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from '@core/interfaces/category.interface';
 import { Product } from '@core/interfaces/product.interface';
-import { BehaviorSubject } from 'rxjs';
 import { NotificationService } from './notification.service';
 
 const baseUrl = 'http://localhost:3000';
@@ -11,7 +10,6 @@ const baseUrl = 'http://localhost:3000';
   providedIn: 'root',
 })
 export class CategoryService {
-    // products$ = new BehaviorSubject<Product[]>([]);
   categories: Category[];
   products: Product[];
   constructor(private http: HttpClient, private ns: NotificationService) {}
@@ -32,13 +30,4 @@ export class CategoryService {
         this.products = data;
       });
   }
-
-  // getProducts(categoryName: string): void {
-  //   this.http
-  //     .get<Product[]>(`${baseUrl}/category/${categoryName}`)
-  //     .subscribe(i => {
-  //       this.products$.next(i);
-  //       console.log(this.products$);
-  //     });
-  // }
 }

@@ -6,15 +6,19 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-products-in-cart',
-  templateUrl: './products-in-cart.component.html',
-  styleUrls: ['./products-in-cart.component.scss'],
+  selector: 'app-cart-detail',
+  templateUrl: './cart-detail.component.html',
+  styleUrls: ['./cart-detail.component.scss'],
 })
-export class ProductsInCartComponent implements OnInit {
+export class CartDetailComponent implements OnInit {
+  public count$: Observable<number>;
+  public total$: Observable<number>;
   public products$: Observable<Product[]>;
 
   constructor(public store: Store<AppState>) {
+    this.count$ = store.pipe(select(CartSelectors.selectCount));
     this.products$ = store.pipe(select(CartSelectors.selectProducts));
+    this.total$ = store.pipe(select(CartSelectors.selectTotal));
   }
 
   ngOnInit(): void {}

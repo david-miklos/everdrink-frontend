@@ -41,8 +41,8 @@ export class AuthService {
   }
 
   signin(user: User): void {
-    this.http.post(`${baseUrl}/auth/signin`, user).subscribe(
-      (data: LoginResponseInterface) => {
+    this.http.post<LoginResponseInterface>(`${baseUrl}/auth/signin`, user).subscribe(
+      (data) => {
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('expires_in', data.expires_in);
         localStorage.setItem('id', data.payload.id);
