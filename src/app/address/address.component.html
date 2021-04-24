@@ -1,0 +1,111 @@
+<form
+  fxLayout="column"
+  fxLayoutAlign="space-evenly center"
+  [formGroup]="addressForm"
+  (ngSubmit)="submitAddress(addressForm)"
+  novalidate
+>
+  <div style="padding: 10px">
+    <div>
+      <h2>Szállítási adatok</h2>
+    </div>
+  </div>
+
+  <div style="padding: 10px" fxLayout="row" fxLayoutAlign="center center">
+    <div class="left">
+      <div class="2">
+        <div>
+          <mat-form-field appearance="outline">
+            <span matPrefix>+36</span>
+            <mat-label>Telefonszám</mat-label>
+            <input matInput type="text" formControlName="phone" required />
+            <mat-hint>Megfelelő formátum: 123456789</mat-hint>
+            <mat-error>Adjon meg egy érvényes telefonszámot!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="4">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Ország</mat-label>
+            <mat-select formControlName="country">
+              <mat-option required value="Magyarország"
+                >Magyarország</mat-option
+              >
+            </mat-select>
+            <mat-error>Válassza ki az országot!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="7">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Város</mat-label>
+            <input matInput type="text" formControlName="city" required />
+            <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+            <mat-error>Adjon meg egy érvényes várost!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="8">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Utca</mat-label>
+            <input matInput type="text" formControlName="street" required />
+            <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+            <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="3">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
+            <mat-error>Adjon meg egy érvényes E-mail címet!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="5">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Megye</mat-label>
+            <input matInput type="text" formControlName="region" required />
+            <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+            <mat-error>Adjon meg egy érvényes megyét!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="6">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Irányítószám</mat-label>
+            <input matInput type="text" formControlName="zip" required />
+            <mat-error>Adjon meg egy érvényes Irányítószámot!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="9">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Utca szám</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="street_number"
+              required
+            />
+            <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+            <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding: 10px" class="6">
+    <button type="submit" mat-raised-button color="accent">Befejezés</button>
+  </div>
+</form>

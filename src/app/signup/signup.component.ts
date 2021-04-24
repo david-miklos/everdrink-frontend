@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '@core/services/notification.service';
 import { FormBuilder } from '@angular/forms';
 import { MatchValidation } from '@core/validators/match.validator';
 import { AuthService } from '@core/services/auth.service';
 import { User } from '@core/interfaces/user.interface';
+import { Router } from '@angular/router';
 
 const RegExpValidator = {
   lowerCase: RegExp(/^(?=.*?[a-z])/),
@@ -23,7 +24,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private ns: NotificationService,
     protected authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.signupForm = this.formBuilder.group(
       {
@@ -51,8 +53,10 @@ export class SignupComponent implements OnInit {
 
   signup(form: FormGroup): void {
     if (form.valid) {
+      this.ns.show('RENDBEN! Adatok megfelelőek!');
       delete form.value.passwordConfirm;
       this.authService.signup(form.value as User);
+      this.router.navigate(['address']);
       console.log(form.value);
       this.signupForm.reset();
     } else {

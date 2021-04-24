@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '@core/interfaces/user.interface';
 import { AuthService } from '@core/services/auth.service';
 import { NotificationService } from '@core/services/notification.service';
@@ -15,7 +16,8 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private ns: NotificationService
+    private ns: NotificationService,
+    private router: Router
   ) {
     this.signinForm = this.formBuilder.group({
       email: [null, [Validators.email, Validators.required]],
@@ -26,8 +28,8 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {}
   signin(form: FormGroup): void {
     if (form.valid) {
-      this.authService.signin(form.value as User);
       this.ns.show('RENDBEN! Adatok megfelelőek!');
+      this.authService.signin(form.value as User);
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

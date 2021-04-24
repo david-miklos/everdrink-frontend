@@ -1,58 +1,86 @@
 <form
-  [formGroup]="signupForm"
   fxLayout="column"
   fxLayoutAlign="space-evenly center"
-  fxLayoutGap="10px"
+  [formGroup]="signupForm"
   (ngSubmit)="signup(signupForm)"
   novalidate
 >
-  <mat-form-field appearance="outline">
-    <mat-label>Az Ön e-mail címe</mat-label>
-    <input matInput type="email" formControlName="email" required />
-    <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
-    <mat-error>Adjon meg egy érvényes E-mail címet!</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Választott jelszava</mat-label>
-    <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
-    <input
-      matInput
-      #password
-      type="password"
-      [type]="toggle.type"
-      formControlName="password"
-      required
-    />
-    <mat-error>Feltételeknek megfelelő jelszó megadása kötelező!</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Jelszó ismétlése</mat-label>
-    <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
-    <input
-      matInput
-      type="password"
-      [type]="toggle.type"
-      formControlName="passwordConfirm"
-      required
-    />
-    <mat-error>Megadott jelszavak nem azonosak!</mat-error>
-  </mat-form-field>
-  <div *ngIf="password.value.length > 0">
-    <mat-label>Jelszó erőssége:</mat-label>
-    <mat-password-strength
-      #passwordStrength
-      [password]="password.value"
-      [enableSpecialCharRule]="false"
-    >
-    </mat-password-strength>
-    <mat-password-strength-info
-      [passwordComponent]="passwordStrength"
-      lowerCaseCriteriaMsg="legalább egy kisbetűt tartalmaznia kell"
-      upperCaseCriteriaMsg="legalább egy nagybetűt tartalmaznia kell"
-      digitsCriteriaMsg="legalább egy számot tartalmaznia kell"
-      minCharsCriteriaMsg="legalább 8 karakter hosszú legyen"
-    >
-    </mat-password-strength-info>
+  <div style="padding: 10px" class="1">
+    <div>
+      <h2>Regisztráció</h2>
+    </div>
   </div>
-  <button mat-raised-button color="accent">Regisztráció</button>
+  <div style="padding: 10px" class="2">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Az Ön e-mail címe</mat-label>
+        <input matInput type="email" formControlName="email" required />
+        <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
+        <mat-error>Adjon meg egy érvényes E-mail címet!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div style="padding: 10px" class="3">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Választott jelszava</mat-label>
+        <mat-pass-toggle-visibility
+          #toggle_first
+          matSuffix
+        ></mat-pass-toggle-visibility>
+        <input
+          matInput
+          #password
+          type="password"
+          [type]="toggle_first.type"
+          formControlName="password"
+          required
+        />
+        <mat-error>Feltételeknek megfelelő jelszó megadása kötelező!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div style="padding: 10px" class="4">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Jelszó ismétlése</mat-label>
+        <mat-pass-toggle-visibility
+          #toggle_second
+          matSuffix
+        ></mat-pass-toggle-visibility>
+        <input
+          matInput
+          type="password"
+          [type]="toggle_second.type"
+          formControlName="passwordConfirm"
+          required
+        />
+        <mat-error>Megadott jelszavak nem azonosak!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div style="padding: 10px" class="5">
+    <div>
+      <div *ngIf="password.value.length > 0">
+        <mat-label>Jelszó erőssége:</mat-label>
+        <mat-password-strength
+          #passwordStrength
+          [password]="password.value"
+          [enableSpecialCharRule]="false"
+        >
+        </mat-password-strength>
+        <mat-password-strength-info
+          [passwordComponent]="passwordStrength"
+          lowerCaseCriteriaMsg="legalább egy kisbetűt tartalmaznia kell"
+          upperCaseCriteriaMsg="legalább egy nagybetűt tartalmaznia kell"
+          digitsCriteriaMsg="legalább egy számot tartalmaznia kell"
+          minCharsCriteriaMsg="legalább 8 karakter hosszú legyen"
+        >
+        </mat-password-strength-info>
+      </div>
+    </div>
+  </div>
+  <div style="padding-top: 10px">
+    <button type="submit" mat-raised-button color="accent">Regisztráció</button>
+  </div>
 </form>

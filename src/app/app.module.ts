@@ -49,6 +49,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ROOT_REDUCERS } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { AddressComponent } from './address/address.component';
+import { MatSelectModule } from '@angular/material/select';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -84,6 +86,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ProductsInCartComponent,
     ProductInCartComponent,
     CartDetailComponent,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,
@@ -136,6 +139,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatGridListModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatMenuModule,
     MatPasswordStrengthModule,
     MatExpansionModule,

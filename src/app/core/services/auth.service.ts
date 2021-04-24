@@ -29,7 +29,7 @@ export class AuthService {
   signup(user: User): void {
     this.http.post<User>(`${baseUrl}/auth/signup`, user).subscribe(
       (data) => {
-        this.router.navigate(['']);
+        // this.router.navigate(['address']);
         this.ns.show('Sikeres regisztráció!');
         console.log(data);
       },
@@ -51,7 +51,7 @@ export class AuthService {
         // this.isLogin$.next(true);
         console.log(data);
         this.ns.show('Sikeres bejelentkezés!');
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
       },
       (error) => {
         this.ns.show('HIBA! Bejelentkezés sikertelen!');
