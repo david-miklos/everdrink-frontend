@@ -1,0 +1,35 @@
+<button
+  mat-icon-button
+  class="account-icon"
+  aria-label="Example icon-button with share icon"
+  [matMenuTriggerFor]="account"
+>
+  <mat-icon>account_circle</mat-icon>
+</button>
+<mat-menu #account="matMenu">
+  <button
+    mat-menu-item
+    [routerLink]="['/signup']"
+    routerLinkActive="router-link-active"
+  >
+    Regisztráció
+  </button>
+  <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
+    <button
+      mat-menu-item
+      (click)="signout()"
+      routerLinkActive="router-link-active"
+    >
+      Kijelentkezés
+    </button>
+  </div>
+  <ng-template #elseBlock>
+    <button
+      mat-menu-item
+      [routerLink]="['/signin']"
+      routerLinkActive="router-link-active"
+    >
+      Bejelentkezés
+    </button>
+  </ng-template>
+</mat-menu>

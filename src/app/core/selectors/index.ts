@@ -1,3 +1,4 @@
 import * as CartSelectors from './cart.selectors';
+import * as AuthSelectors from './auth.selectors';
 
-export { CartSelectors };
+export { CartSelectors, AuthSelectors };

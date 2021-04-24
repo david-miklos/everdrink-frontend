@@ -26,7 +26,7 @@ import { PhoneFormatPipe } from '@core/pipes/phoneformat.pipe';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './header/menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { CategoryComponent } from './category/category.component';
@@ -55,7 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['cart'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['cart', 'auth'], rehydrate: true })(reducer);
   // return localStorageSync({ keys: ['cart'] })(reducer);
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];

@@ -3,6 +3,7 @@ import { Action, ActionReducerMap } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 import { cartReducer } from '@core/reducers/cart.reducer';
 import { AppState } from '@core/states/app.state';
+import { authReducer } from '@core/reducers/auth.reducer';
 
 /**
  * Our state is composed of a map of action reducer functions.
@@ -14,6 +15,7 @@ export const ROOT_REDUCERS = new InjectionToken<
 >('Root reducers token', {
   factory: () => ({
     cart: cartReducer,
+    auth: authReducer,
     router: fromRouter.routerReducer,
   }),
 });

@@ -1,5 +1,6 @@
 import * as fromRouter from '@ngrx/router-store';
 import { CartState } from './cart.state';
+import { AuthState } from './auth.state';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -7,5 +8,6 @@ import { CartState } from './cart.state';
  */
 export interface AppState {
   cart: CartState;
+  auth: AuthState;
   router: fromRouter.RouterReducerState<any>;
 }

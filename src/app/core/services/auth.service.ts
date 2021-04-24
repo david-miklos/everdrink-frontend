@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { AuthSelectors } from '@core/selectors';
 import { Router } from '@angular/router';
-
 import { NotificationService } from '@core/services/notification.service';
-
 import { User } from '@core/interfaces/user.interface';
-import { LoginResponseInterface } from '@core/interfaces/login.response.interface';
+import { Auth } from '@core/interfaces/login.response.interface';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '@core/states/app.state';
+import { AuthActions } from '@core/actions';
 
 const baseUrl = 'http://localhost:3000';
 
@@ -14,17 +16,16 @@ const baseUrl = 'http://localhost:3000';
   providedIn: 'root',
 })
 export class AuthService {
-  //   isLogin$ = new BehaviorSubject<boolean>(this.hasToken());
+  public isLoggedIn$: Observable<boolean>;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private ns: NotificationService
-  ) {}
-
-  //   isLoggedIn(): Observable<boolean> {
-  //     return this.isLogin$.asObservable();
-  //   }
+    private ns: NotificationService,
+    public store: Store<AppState>
+  ) {
+    this.isLoggedIn$ = store.pipe(select(AuthSelectors.selectIsLoggedIn));
+  }
 
   signup(user: User): void {
     this.http.post<User>(`${baseUrl}/auth/signup`, user).subscribe(
@@ -41,23 +42,21 @@ export class AuthService {
   }
 
   signin(user: User): void {
-    this.http.post<LoginResponseInterface>(`${baseUrl}/auth/signin`, user).subscribe(
+    this.http.post<Auth>(`${baseUrl}/auth/signin`, user).subscribe(
       (data) => {
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('expires_in', data.expires_in);
-        localStorage.setItem('id', data.payload.id);
-        localStorage.setItem('email', data.payload.email);
-        localStorage.setItem('role', data.payload.role);
-        // this.isLogin$.next(true);
-        console.log(data);
+        this.store.dispatch(AuthActions.login({ auth: data }));
         this.ns.show('Sikeres bejelentkezés!');
-        // this.router.navigate(['']);
+        this.router.navigate(['']);
       },
       (error) => {
         this.ns.show('HIBA! Bejelentkezés sikertelen!');
         console.error(error);
       }
     );
+  }
+
+  signout(): void {
+    this.store.dispatch(AuthActions.logout());
   }
 
   //   logout(): void {
