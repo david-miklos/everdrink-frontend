@@ -1,41 +1,32 @@
-// import { Injectable } from '@angular/core';
-// import { Product } from '@core/interfaces/product.interface';
-// import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { CartActions } from '@core/actions';
+import { Product } from '@core/interfaces/product.interface';
+import { CartSelectors } from '@core/selectors';
+import { AppState } from '@core/states/app.state';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class CartService {
-//   // category: Product[] = [];
-//   products$ = new BehaviorSubject<Product[]>([]);
-//   total$ = new BehaviorSubject<number>(0);
-//   constructor() {}
+@Injectable({
+  providedIn: 'root',
+})
+export class CartService {
+  public products$: Observable<Product[]>;
+  public count$: Observable<number>;
+  public total$: Observable<number>;
 
-//   addProduct(product: Product): void {
-//     this.products$.next(this.products$.getValue().concat([product]));
-//     this.total$.next(this.total$.getValue() + product.gross_price);
-//     // console.log(this.products$);
-//     // console.log(this.products$.getValue().length);
-//   }
+  constructor(public store: Store<AppState>) {
+    this.products$ = store.pipe(select(CartSelectors.selectProducts));
+    this.count$ = store.pipe(select(CartSelectors.selectCount));
+    this.total$ = store.pipe(select(CartSelectors.selectTotal));
+  }
 
-//   getProductCount(): number {
-//     return this.products$.getValue().length;
-//    }
+  addProduct(productToAdd: Product): void {
+    this.store.dispatch(CartActions.addToCart({ product: productToAdd }));
+  }
 
-
-//   getProducts(): void {
-//     this.products$.subscribe((data) => {
-//       // console.log(data);
-//     });
-//   }
-
-//   removeProduct(productToRemove): void {
-//     // console.log(productToRemove);
-//     // console.log(this.category);
-//     // console.log(this.category.filter((product) => product !== productToRemove));
-//     // // return this.category.filter((product) => product !== productToRemove);
-//     this.products$.next(this.products$.getValue().filter((product) => product !== productToRemove));
-//     this.total$.next(this.total$.getValue() - productToRemove.gross_price);
-//     // console.log(this.products$);
-//   }
-// }
+  removeProduct(productToRemove: Product): void {
+    this.store.dispatch(
+      CartActions.removeFromCart({ product: productToRemove })
+    );
+  }
+}

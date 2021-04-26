@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@core/interfaces/product.interface';
 import { CartSelectors } from '@core/selectors';
+import { CartService } from '@core/services/cart.service';
 import { AppState } from '@core/states/app.state';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -11,11 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products-in-cart.component.scss'],
 })
 export class ProductsInCartComponent implements OnInit {
-  public products$: Observable<Product[]>;
-
-  constructor(public store: Store<AppState>) {
-    this.products$ = store.pipe(select(CartSelectors.selectProducts));
-  }
+  constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}
 }

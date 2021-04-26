@@ -5,7 +5,7 @@
       <mat-card-subtitle>Details</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <div *ngFor="let product of products$ | async">
+      <div *ngFor="let product of this.cartService.products$ | async">
         <h2>{{product.brand}} {{product.name}}</h2>
         <p>Nettó ár: {{product.net_price | number}} Ft</p>
         <p>Áfa: {{product.vat | number}} Ft</p>
@@ -14,7 +14,7 @@
         <p>Göngyöleg bruttó ár: {{product.wrappage_gross_price | number}} Ft</p>
         <p>Összesen: {{product.gross_price + product.wrappage_gross_price | number}} Ft</p>
       </div>
-      <h2>TOTAL: {{ total$ | async | number}} Ft</h2>
+      <h2>TOTAL: {{ this.cartService.total$ | async | number}} Ft</h2>
     </mat-card-content>
     <mat-card-actions>
     </mat-card-actions>

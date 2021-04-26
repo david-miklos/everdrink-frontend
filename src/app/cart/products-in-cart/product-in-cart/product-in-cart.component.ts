@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CartActions } from '@core/actions';
 import { Product } from '@core/interfaces/product.interface';
+import { CartService } from '@core/services/cart.service';
 import { AppState } from '@core/states/app.state';
 import { Store } from '@ngrx/store';
 
@@ -11,11 +12,11 @@ import { Store } from '@ngrx/store';
 })
 export class ProductInCartComponent implements OnInit {
   @Input() product: Product = null;
-  constructor(private store: Store<AppState>) {}
+  constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}
 
   removeFromCart(): void {
-    this.store.dispatch(CartActions.removeFromCart({ product: this.product }));
+    this.cartService.removeProduct(this.product);
   }
 }

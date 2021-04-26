@@ -26,6 +26,7 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   signin(form: FormGroup): void {
     if (form.valid) {
       this.ns.show('RENDBEN! Adatok megfelelőek!');

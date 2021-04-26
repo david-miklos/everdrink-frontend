@@ -29,7 +29,7 @@ import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './header/menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
-import { CategoryComponent } from './category/category.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { ContactComponent } from './contact/contact.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -37,9 +37,9 @@ import { OrdersComponent } from './admin/orders/orders.component';
 import { UsersComponent } from './admin/users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductbarComponent } from './category/productbar/productbar.component';
-import { ProductsComponent } from './category/products/products.component';
-import { ProductComponent } from './category/products/product/product.component';
+
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './products/product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductsInCartComponent } from './cart/products-in-cart/products-in-cart.component';
 import { ProductInCartComponent } from './cart/products-in-cart/product-in-cart/product-in-cart.component';
@@ -51,6 +51,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { AddressComponent } from './address/address.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CategoryComponent } from './categories/category/category.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -68,25 +69,26 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ObjectToArrayPipe,
     PhoneFormatPipe,
     AppComponent,
+    SignupComponent,
     HeaderComponent,
     MenuComponent,
     FooterComponent,
+    AddressComponent,
     FrontpageComponent,
+    CategoriesComponent,
     CategoryComponent,
     ContactComponent,
     SigninComponent,
-    SignupComponent,
     ContactComponent,
     OrdersComponent,
     UsersComponent,
-    ProductbarComponent,
     ProductsComponent,
     ProductComponent,
     CartComponent,
     ProductsInCartComponent,
     ProductInCartComponent,
     CartDetailComponent,
-    AddressComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -130,17 +132,17 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     }),
     MatCardModule,
     MatIconModule,
+    MatSelectModule,
     MatButtonModule,
     MatBadgeModule,
+    MatMenuModule,
+    MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,
     AppRoutingModule,
     FlexLayoutModule,
     MatGridListModule,
     MatToolbarModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatMenuModule,
     MatPasswordStrengthModule,
     MatExpansionModule,
     HttpClientModule,

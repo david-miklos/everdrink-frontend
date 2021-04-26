@@ -1,0 +1,44 @@
+<!-- <div class="productbar">
+  <mat-toolbar color="primary" class="flexSpaceBetween">
+      <div *ngFor="let category of categoryService.categories">
+        <button
+          mat-stroked-button
+          color="accent"
+          [routerLink]="['./', category.name]"
+          routerLinkActive="router-link-active"
+        >
+          {{ category.display_name }}
+        </button>
+      </div>
+  </mat-toolbar>
+</div> -->
+<div class="card">
+  <mat-card class="category-card">
+    <mat-card-header fxLayout="column" fxLayoutAlign="space-evenly center">
+      <mat-card-title>{{ category.display_name }}</mat-card-title>
+    </mat-card-header>
+    <div class="img" fxLayout="column" fxLayoutAlign="space-evenly center">
+      <img
+        mat-card-image
+        src="/assets/mockups/beer.mockup.jpg"
+        alt="Photo of a beer bottle"
+      />
+    </div>
+
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
+      <p>
+        {{ category.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions fxLayout="column" fxLayoutAlign="space-evenly end">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['./', category.name]"
+        routerLinkActive="router-link-active"
+      >
+        Tovább
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
