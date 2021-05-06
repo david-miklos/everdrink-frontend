@@ -19,9 +19,10 @@
             mat-mini-fab
             color="accent"
             aria-label="Icon button with a cart one icon"
-            (click)="addToCart()"
+            [routerLink]="['/product-detail', product.id]"
+            routerLinkActive="router-link-active"
           >
-            <mat-icon>add_shopping_cart</mat-icon>
+            <mat-icon>more_vert</mat-icon>
           </button>
         </div>
       </div>

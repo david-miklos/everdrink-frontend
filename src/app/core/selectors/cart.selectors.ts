@@ -4,7 +4,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const selectStateCount = (state: CartState) => state.count;
 
-const selectStateProducts = (state: CartState) => state.products;
+const selectStateOrders = (state: CartState) => state.orders;
 
 const selectStateTotal = (state: CartState) => state.total;
 
@@ -12,9 +12,9 @@ const cartFeatureSelector = createFeatureSelector<AppState, CartState>(
   cartFeatureKey
 );
 
-export const selectProducts = createSelector(
+export const selectOrders = createSelector(
   cartFeatureSelector,
-  selectStateProducts,
+  selectStateOrders,
 );
 
 export const selectCount = createSelector(

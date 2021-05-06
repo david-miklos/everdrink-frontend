@@ -4,7 +4,7 @@ import { NotificationService } from '@core/services/notification.service';
 import { FormBuilder } from '@angular/forms';
 import { MatchValidation } from '@core/validators/match.validator';
 import { AuthService } from '@core/services/auth.service';
-import { User } from '@core/interfaces/user.interface';
+import { LoginUser } from '@core/interfaces/login.user.interface';
 import { Router } from '@angular/router';
 
 const RegExpValidator = {
@@ -55,10 +55,9 @@ export class SignupComponent implements OnInit {
     if (form.valid) {
       this.ns.show('RENDBEN! Adatok megfelelőek!');
       delete form.value.passwordConfirm;
-      this.authService.signup(form.value as User);
-      this.router.navigate(['address']);
-      console.log(form.value);
-      this.signupForm.reset();
+      this.authService.signup(form.value as LoginUser);
+      this.router.navigate(['stepper']);
+      // this.signupForm.reset();
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

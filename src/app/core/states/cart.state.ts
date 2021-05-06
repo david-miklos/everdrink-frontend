@@ -1,15 +1,15 @@
-import { Product } from '@core/interfaces/product.interface';
+import { Order } from '@core/interfaces/order.interface';
 
 export interface CartState {
   count: number;
   total: number;
-  products: Product[];
+  orders: Order[];
 }
 
 export const initialCartState: CartState = {
   count: 0,
   total: 0,
-  products: [] as Product[],
+  orders: [] as Order[],
 };
 
 export const cartFeatureKey = 'cart';

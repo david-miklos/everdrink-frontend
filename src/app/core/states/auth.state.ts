@@ -1,13 +1,21 @@
-import { Auth } from '@core/interfaces/login.response.interface';
+import { LoginResponse, Role } from '@core/interfaces/login.response.interface';
 
 export interface AuthState {
   isLoggedIn: boolean;
-  auth: Auth;
+  auth: LoginResponse;
 }
 
 export const initialAuthState: AuthState = {
   isLoggedIn: false,
-  auth: {} as Auth,
+  auth: {
+    payload: {
+      id: undefined,
+      email: undefined,
+      role: Role.GUEST,
+    },
+    access_token: undefined,
+    expires_in: undefined,
+  },
 };
 
 export const authFeatureKey = 'auth';

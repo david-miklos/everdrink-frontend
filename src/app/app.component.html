@@ -1,5 +1,10 @@
 <main>
-  <!-- <p>EverDrink B2B app fut!</p> -->
-  <app-header></app-header>
-  <router-outlet></router-outlet>
+  <div *ngIf="role === 'ADMIN'; else elseBlock">
+    <app-admin-header></app-admin-header>
+    <router-outlet></router-outlet>
+  </div>
+  <ng-template #elseBlock>
+    <app-header></app-header> 
+    <router-outlet></router-outlet>
+  </ng-template>
 </main>

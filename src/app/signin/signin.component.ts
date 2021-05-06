@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '@core/interfaces/user.interface';
+import { LoginUser } from '@core/interfaces/login.user.interface';
 import { AuthService } from '@core/services/auth.service';
 import { NotificationService } from '@core/services/notification.service';
 
@@ -29,8 +29,8 @@ export class SigninComponent implements OnInit {
 
   signin(form: FormGroup): void {
     if (form.valid) {
-      this.ns.show('RENDBEN! Adatok megfelelőek!');
-      this.authService.signin(form.value as User);
+      this.authService.signin(form.value as LoginUser);
+      this.router.navigate(['']);
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

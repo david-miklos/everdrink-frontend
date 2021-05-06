@@ -16,6 +16,13 @@
   </button>
   <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
     <button
+    mat-menu-item
+    [routerLink]="['/add-address']"
+    routerLinkActive="router-link-active"
+  >
+    Új cím hozzáadása
+  </button>
+    <button
       mat-menu-item
       (click)="signout()"
       routerLinkActive="router-link-active"

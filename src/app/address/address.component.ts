@@ -23,7 +23,6 @@ export class AddressComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.addressForm = this.formBuilder.group({
-      email: [null, [Validators.email, Validators.required]],
       phone: [
         null,
         [Validators.pattern(RegExpValidator.phone), Validators.required],
@@ -81,7 +80,6 @@ export class AddressComponent implements OnInit {
     if (form.valid) {
       this.addressService.addAddress(form.value as Address);
       console.log(form.value);
-      this.addressForm.reset();
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

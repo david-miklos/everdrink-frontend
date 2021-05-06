@@ -1,0 +1,16 @@
+<div >
+    <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <span>Megfelelő formátum:</span>
+            <h2>.png</h2>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px">
+        <input type="file" id="file"  (change)="handleFileInput($event.target.files)" />
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px">
+        <button type="button" mat-raised-button color="accent" (click)="onUpload()">Fájlfeltöltés</button>
+    </div>
+</div>
+
+

@@ -7,6 +7,12 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddressComponent } from './address/address.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { FileComponent } from './file/file.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { UsersComponent } from './admin/users/users.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { CheckoutsComponent } from './admin/checkouts/checkouts.component';
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent },
@@ -14,8 +20,14 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'cart', component: CartComponent },
   { path: 'address', component: AddressComponent },
-  { path: 'category', component: CategoriesComponent, },
-  { path: 'category/:name', component: ProductsComponent, },
+  { path: 'add-address', component: AddAddressComponent },
+  { path: 'stepper', component: StepperComponent },
+  { path: 'file', component: FileComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'checkouts', component: CheckoutsComponent },
+  { path: 'categories', component: CategoriesComponent, },
+  { path: 'products/:id', component: ProductsComponent, },
+  { path: 'product-detail/:id', component: ProductDetailComponent, },
 ];
 
 @NgModule({

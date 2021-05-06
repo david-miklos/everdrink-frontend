@@ -1,4 +1,7 @@
+import { Role } from './login.response.interface';
+
 export interface User {
-  username: string;
-  password: string;
+  id: string;
+  email: string;
+  role: Role;
 }

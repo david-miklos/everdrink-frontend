@@ -1,0 +1,3 @@
+<div *ngFor="let order of this.cartService.orders$ | async">
+  <app-order-in-cart [order]="order"></app-order-in-cart>
+</div>

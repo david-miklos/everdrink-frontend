@@ -1,22 +1,62 @@
 <div class="card">
-  <mat-card class="product-card">
+  <mat-card
+    fxLayout="column"
+    fxLayoutAlign="space-evenly center"
+    class="product-card"
+  >
     <mat-card-header>
       <mat-card-title>Checkout</mat-card-title>
       <mat-card-subtitle>Details</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <div *ngFor="let product of this.cartService.products$ | async">
-        <h2>{{product.brand}} {{product.name}}</h2>
-        <p>Nettó ár: {{product.net_price | number}} Ft</p>
-        <p>Áfa: {{product.vat | number}} Ft</p>
-        <p>Bruttó ár: {{product.gross_price | number}} Ft</p>
-        <p>Göngyöleg nettó ár: {{product.wrappage_net_price | number}} Ft</p>
-        <p>Göngyöleg bruttó ár: {{product.wrappage_gross_price | number}} Ft</p>
-        <p>Összesen: {{product.gross_price + product.wrappage_gross_price | number}} Ft</p>
+      <div *ngFor="let order of this.cartService.orders$ | async">
+        <h2>
+          {{ order.product.brand }} {{ order.product.name }}
+          {{ order.quantity }}db.
+        </h2>
+        <p>
+          Nettó ár: {{ order.product.net_price * order.quantity | number }} Ft
+        </p>
+        <p>Áfa: {{ order.product.vat * order.quantity | number }} Ft</p>
+        <p>
+          Bruttó ár:
+          {{ order.product.gross_price * order.quantity | number }} Ft
+        </p>
+        <p>
+          Göngyöleg nettó ár:
+          {{ order.product.wrappage_net_price * order.quantity | number }} Ft
+        </p>
+        <p>
+          Göngyöleg bruttó ár:
+          {{ order.product.wrappage_gross_price * order.quantity | number }} Ft
+        </p>
+        <p>
+          Összesen:
+          {{
+            (order.product.gross_price + order.product.wrappage_gross_price) *
+              order.quantity | number
+          }}
+          Ft
+        </p>
       </div>
-      <h2>TOTAL: {{ this.cartService.total$ | async | number}} Ft</h2>
+
+      <h2>TOTAL: {{ this.cartService.total$ | async | number }} Ft</h2>
     </mat-card-content>
     <mat-card-actions>
+      <mat-form-field appearance="fill">
+        <mat-label>Válasszon szállítási módot</mat-label>
+        <mat-select [(value)]="chosenShipping" (selectionChange)="onSelectChange()">
+          <mat-option value="delivery">Kiszállítás</mat-option>
+          <mat-option value="pickup">Személyes átvétel</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="cart-button-container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="button">
+          <button mat-raised-button color="primary" (click)="checkout()">
+            Checkout
+          </button>
+        </div>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,6 +1,6 @@
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="10px grid">
-    <div fxFlex="25%" *ngFor="let product of categoryService.products">
+    <div fxFlex="25%" *ngFor="let product of productService.products">
       <app-product [product]="product"></app-product>
     </div>
   </div>

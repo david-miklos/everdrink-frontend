@@ -1,0 +1,93 @@
+<div style="margin: 20px" class="card">
+  <mat-card fxLayout="column" fxLayoutAlign=" none">
+    <div>
+      <mat-card-header>
+        <mat-card-title>Order</mat-card-title>
+        <mat-card-subtitle>Order Details</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <div>
+      <div class="content">
+        <mat-card-content fxLayout="row" fxLayoutAlign="space-around none">
+          <div fxLayout="column" fxLayoutAlign="center center" class="image">
+            <div>
+              <h2>{{ order.product.brand }} {{ order.product.name }}</h2>
+            </div>
+            <div>
+              <img
+                mat-card-image
+                src="/assets/mockups/beer.mockup.jpg"
+                alt="Photo of a beer bottle"
+                style="width: 100px; height: 100px; margin-top: 5px"
+              />
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="center center"
+            class="product-details"
+          >
+            <div>
+              <p>Típus: {{ order.product.type }}</p>
+              <p>Alkohol tartalom: {{ order.product.alcohol_content }}</p>
+              <p>Kiszerelés: {{ order.product.packaging }}</p>
+              <p>Méret: {{ order.product.volume }}</p>
+            </div>
+          </div>
+          <div class="details">
+            <div>
+              <p>
+                Nettó ár:
+                {{ order.product.net_price * order.quantity | number }} Ft
+              </p>
+              <p>Áfa: {{ order.product.vat * order.quantity | number }} Ft</p>
+              <p>
+                Bruttó ár:
+                {{ order.product.gross_price * order.quantity | number }} Ft
+              </p>
+              <p>
+                Göngyöleg nettó ár:
+                {{ order.product.wrappage_net_price * order.quantity | number }}
+                Ft
+              </p>
+              <p>
+                Göngyöleg bruttó ár:
+                {{
+                  order.product.wrappage_gross_price * order.quantity | number
+                }}
+                Ft
+              </p>
+              <p>
+                Összesen:
+                {{
+                  (order.product.gross_price +
+                    order.product.wrappage_gross_price) *
+                    order.quantity | number
+                }}
+                Ft
+              </p>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="quantity">
+            <div>
+              <h2>Darabszám: {{ order.quantity }}</h2>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center none" class="actions">
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="warn"
+            style="margin-top: 10px"
+            (click)="removeFromCart()"
+          >
+            Eltávolítás
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+        </mat-card-actions>
+      </div>
+    </div>
+  </mat-card>
+</div>

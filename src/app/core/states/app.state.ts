@@ -1,13 +1,13 @@
 import * as fromRouter from '@ngrx/router-store';
-import { CartState } from './cart.state';
-import { AuthState } from './auth.state';
+import { CartState, initialCartState } from './cart.state';
+import { AuthState, initialAuthState } from './auth.state';
+import { initialUsersState, UsersState } from './users.state';
+import { CheckoutState } from './checkout.state';
 
-/**
- * As mentioned, we treat each reducer like a table in a database. This means
- * our top level state interface is just a map of keys to inner state types.
- */
 export interface AppState {
   cart: CartState;
   auth: AuthState;
+  users: UsersState;
+  checkout: CheckoutState;
   router: fromRouter.RouterReducerState<any>;
 }

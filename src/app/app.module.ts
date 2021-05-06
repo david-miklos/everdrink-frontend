@@ -33,16 +33,12 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ContactComponent } from './contact/contact.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-import { OrdersComponent } from './admin/orders/orders.component';
 import { UsersComponent } from './admin/users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './products/product/product.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductsInCartComponent } from './cart/products-in-cart/products-in-cart.component';
-import { ProductInCartComponent } from './cart/products-in-cart/product-in-cart/product-in-cart.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -52,11 +48,29 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { AddressComponent } from './address/address.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CategoryComponent } from './categories/category/category.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FileComponent } from './file/file.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { UserComponent } from './admin/users/user/user.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { CheckoutComponent } from './admin/checkouts/checkout/checkout.component';
+import { CheckoutsComponent } from './admin/checkouts/checkouts.component';
+import { OrderInCartComponent } from './cart/orders-in-cart/order-in-cart/order-in-cart.component';
+import { OrdersInCartComponent } from './cart/orders-in-cart/orders-in-cart.component';
+import { OrdersComponent } from './admin/checkouts/checkout/orders/orders.component';
+import { OrderComponent } from './admin/checkouts/checkout/orders/order/order.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
-  return localStorageSync({ keys: ['cart', 'auth'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['cart', 'auth', 'users'], rehydrate: true })(
+    reducer
+  );
   // return localStorageSync({ keys: ['cart'] })(reducer);
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
@@ -69,7 +83,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ObjectToArrayPipe,
     PhoneFormatPipe,
     AppComponent,
-    SignupComponent,
     HeaderComponent,
     MenuComponent,
     FooterComponent,
@@ -78,17 +91,26 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     CategoriesComponent,
     CategoryComponent,
     ContactComponent,
+    SignupComponent,
     SigninComponent,
     ContactComponent,
-    OrdersComponent,
     UsersComponent,
     ProductsComponent,
     ProductComponent,
     CartComponent,
-    ProductsInCartComponent,
-    ProductInCartComponent,
+    CheckoutsComponent,
+    CheckoutComponent,
+    OrdersInCartComponent,
+    OrderInCartComponent,
     CartDetailComponent,
-
+    FileComponent,
+    ProductDetailComponent,
+    AdminHeaderComponent,
+    UserComponent,
+    StepperComponent,
+    AddAddressComponent,
+    OrdersComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -143,7 +165,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     FlexLayoutModule,
     MatGridListModule,
     MatToolbarModule,
+    MatStepperModule,
     MatPasswordStrengthModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MatExpansionModule,
     HttpClientModule,
   ],

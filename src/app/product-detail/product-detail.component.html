@@ -1,0 +1,57 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="card">
+  <mat-card class="product-card">
+    <img
+      mat-card-image
+      src="/assets/mockups/beer.mockup.jpg"
+      alt="Photo of a beer bottle"
+    />
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="center center" class="content">
+        <h2>{{ this.productService.product.brand }}</h2>
+        <h2>{{ this.productService.product.name }}</h2>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="space-evenly start" class="content">
+        <h3>Típus: {{ this.productService.product.type }}</h3>
+        <h3>
+          Alkohol tartalom: {{ this.productService.product.alcohol_content }}
+        </h3>
+        <h3>Kiszerelés: {{ this.productService.product.packaging }}</h3>
+        <h3>Méret: {{ this.productService.product.volume }}</h3>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <form
+        fxLayout="row"
+        fxLayoutAlign="space-around center"
+        [formGroup]="quantityForm"
+        (ngSubmit)="quantity(quantityForm)"
+        novalidate
+      >
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Darabszám</mat-label>
+            <input
+              matInput
+              type="number"
+              value="42"
+              min="1"
+              formControlName="quantity"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button
+            mat-mini-fab
+            color="accent"
+            aria-label="Icon button with a cart one icon"
+            type="submit"
+
+          >
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-card-actions>
+  </mat-card>
+</div>

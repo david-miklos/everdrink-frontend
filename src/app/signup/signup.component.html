@@ -1,28 +1,33 @@
-<form
-  fxLayout="column"
-  fxLayoutAlign="space-evenly center"
-  [formGroup]="signupForm"
-  (ngSubmit)="signup(signupForm)"
-  novalidate
->
-  <div style="padding: 10px" class="1">
-    <div>
-      <h2>Regisztráció</h2>
-    </div>
+<div fxLayout="column" fxLayoutAlign="center center" class="content">
+  <div
+    style="width: 30%"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="header"
+  >
+    <h1>Regisztráció</h1>
   </div>
-  <div style="padding: 10px" class="2">
-    <div>
-      <mat-form-field appearance="outline">
+  <div
+    style="width: 30%; padding-top: 10px"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="form"
+  >
+    <form
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      [formGroup]="signupForm"
+      (ngSubmit)="signup(signupForm)"
+      novalidate
+    >
+      <mat-form-field fxFill appearance="fill">
         <mat-label>E-mail cím</mat-label>
         <input matInput type="email" formControlName="email" required />
         <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
         <mat-error>Adjon meg egy érvényes E-mail címet!</mat-error>
       </mat-form-field>
-    </div>
-  </div>
-  <div style="padding: 10px" class="3">
-    <div>
-      <mat-form-field appearance="outline">
+
+      <mat-form-field fxFill appearance="fill">
         <mat-label>Választott jelszava</mat-label>
         <mat-pass-toggle-visibility
           #toggle_first
@@ -38,11 +43,8 @@
         />
         <mat-error>Feltételeknek megfelelő jelszó megadása kötelező!</mat-error>
       </mat-form-field>
-    </div>
-  </div>
-  <div style="padding: 10px" class="4">
-    <div>
-      <mat-form-field appearance="outline">
+
+      <mat-form-field fxFill appearance="fill">
         <mat-label>Jelszó ismétlése</mat-label>
         <mat-pass-toggle-visibility
           #toggle_second
@@ -57,10 +59,7 @@
         />
         <mat-error>Megadott jelszavak nem azonosak!</mat-error>
       </mat-form-field>
-    </div>
-  </div>
-  <div style="padding: 10px" class="5">
-    <div>
+
       <div *ngIf="password.value.length > 0">
         <mat-label>Jelszó erőssége:</mat-label>
         <mat-password-strength
@@ -78,9 +77,16 @@
         >
         </mat-password-strength-info>
       </div>
-    </div>
+
+      <div
+        style="padding-top: 10px;"
+        class="button"
+        fxFill
+      >
+        <button fxFill type="submit" mat-raised-button color="accent">
+          Regisztráció
+        </button>
+      </div>
+    </form>
   </div>
-  <div style="padding-top: 10px">
-    <button type="submit" mat-raised-button color="accent">Regisztráció</button>
-  </div>
-</form>
+</div>

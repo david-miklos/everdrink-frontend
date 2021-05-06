@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <div class="example-button-container">
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a home icon"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+  <span class="everdrink-text">EVER DRINK</span>
+
+  <div class="users-button-container">
+    <button
+      [routerLink]="['users']"
+      routerLinkActive="router-link-active"
+      mat-stroked-button
+      color="accent"
+    >
+      Felhasználók
+    </button>
+  </div>
+
+  <div class="orders-button-container">
+    <button
+      [routerLink]="['checkouts']"
+      routerLinkActive="router-link-active"
+      mat-stroked-button
+      color="accent"
+    >
+      Rendelések
+    </button>
+  </div>
+  <span class="example-spacer"></span>
+  <app-menu></app-menu>
+</mat-toolbar>

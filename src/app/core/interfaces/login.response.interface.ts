@@ -1,4 +1,4 @@
-export interface Auth {
+export interface LoginResponse {
   payload: Payload;
   access_token: string;
   expires_in: string;

@@ -1,0 +1,7 @@
+<div class="content">
+  <mat-accordion>
+    <div *ngFor="let checkout of checkoutService.checkouts$ | async">
+      <app-checkout [checkout]="checkout"></app-checkout>
+    </div>
+  </mat-accordion>
+</div>

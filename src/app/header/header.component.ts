@@ -24,13 +24,14 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngOnInit(): void {}
 
   ngDoCheck(): void {
-    if (this.router.url === '/cart') {
-      this.hidden = true;
-      return;
-    }
-    this.count$.subscribe((count: number) => (this.content = count));
+    this.count$.subscribe((data) => {
+      this.content = data;
+    });
     if (this.content > 0) {
       this.hidden = false;
+    } else {
+      this.hidden = true;
     }
+
   }
 }

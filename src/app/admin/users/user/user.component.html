@@ -1,0 +1,30 @@
+<div class="card">
+  <mat-card class="user-card">
+    <!-- <img 
+        mat-card-image
+        src="/assets/mockups/beer.mockup.jpg"
+        alt="Photo of a beer bottle"
+      /> -->
+    <mat-card-header>
+      <mat-card-title>{{ user.email }}</mat-card-title>
+      <mat-card-subtitle>{{ user.role }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+<!-- content here -->
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="cart-button-container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="button">
+          <button
+            mat-mini-fab
+            color="accent"
+            aria-label="Icon button with a cart one icon"
+            (click)="approve()"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

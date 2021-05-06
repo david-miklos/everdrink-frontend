@@ -1,4 +1,133 @@
-<div fxLayout="row" fxLayoutAlign="space-around none" >
+<!-- <div fxLayout="row" fxLayoutAlign="space-around none" >
   <app-products-in-cart></app-products-in-cart>
   <app-cart-detail></app-cart-detail>
+</div> -->
+<div class="card">
+  <mat-card
+    fxLayout="column"
+    fxLayoutAlign="space-evenly center"
+    class="product-card"
+  >
+    <mat-card-header fxLayout="row" fxLayoutAlign="center center" fxFill>
+      <mat-card-title>Checkout</mat-card-title>
+      <mat-card-subtitle>Details</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxFill>
+      <div style="margin-top: 20px">
+        <app-orders-in-cart></app-orders-in-cart>
+      </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxFill>
+      <div>
+        <mat-form-field appearance="fill" style="margin-top: 20px">
+          <mat-label>Válasszon szállítási módot</mat-label>
+          <mat-select [(value)]="chosenShipping">
+            <mat-option value="delivery">Kiszállítás</mat-option>
+            <mat-option value="pickup">Személyes átvétel</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div style="padding: 30px" class="addresses">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          style="padding-bottom: 30px"
+        >
+          <label id="example-radio-group-label"
+            >Válassza ki a szállítási címet:</label
+          >
+        </div>
+        <div *ngIf="chosenShipping === 'delivery'; else elseBlock">
+          <div>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="chosenAddress"
+            >
+              <mat-radio-button
+                style="padding: 5px"
+                class="example-radio-button"
+                *ngFor="let address of addressService.userAddresses"
+                [value]="address"
+              >
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+                  <div
+                    style="padding-left: 20px"
+                    fxLayout="column"
+                    fxLayoutAlign="space-around start"
+                  >
+                    <span>Ország: {{ address.country }}</span>
+                    <span>Megye: {{ address.region }}</span>
+                    <span>Város: {{ address.city }}</span>
+                    <span>Utca: {{ address.street }}</span>
+                    <span>Utca szám: {{ address.street_number }}</span>
+                    <span>Telefonszám: {{ address.phone }}</span>
+                  </div>
+                </div>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- total -->
+          <div class="total" style="margin-top: 20px">
+            <h2>TOTAL: {{ this.cartService.total$ | async | number }} Ft</h2>
+          </div>
+        </div>
+        <ng-template #elseBlock>
+          <div>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="chosenAddress"
+            >
+              <mat-radio-button
+                style="padding: 5px"
+                class="example-radio-button"
+                *ngFor="let address of addressService.adminAddresses"
+                [value]="address"
+              >
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+                  <div
+                    style="padding-left: 20px"
+                    fxLayout="column"
+                    fxLayoutAlign="space-around start"
+                  >
+                    <span>Ország: {{ address.country }}</span>
+                    <span>Megye: {{ address.region }}</span>
+                    <span>Város: {{ address.city }}</span>
+                    <span>Utca: {{ address.street }}</span>
+                    <span>Utca szám: {{ address.street_number }}</span>
+                    <span>Telefonszám: {{ address.phone }}</span>
+                  </div>
+                </div>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- total -->
+          <div class="total" style="margin-top: 20px">
+            <h2>
+              TOTAL:
+              {{
+                (this.cartService.total$ | async) -
+                  ((this.cartService.total$ | async) * 4) / 100 | number
+              }}
+              Ft
+            </h2>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="cart-button-container">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          class="button"
+          style="margin-top: 30px"
+        >
+          <button mat-raised-button color="primary" (click)="checkout()">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>

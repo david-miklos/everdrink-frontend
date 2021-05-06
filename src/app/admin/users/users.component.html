@@ -1,1 +1,5 @@
-<p>users works!</p>
+<div class="content">
+  <div *ngFor="let user of userService.users$ | async">
+    <app-user [user]="user"></app-user>
+  </div>
+</div>
