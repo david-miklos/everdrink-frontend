@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <div class="example-button-container">
-    <button
+    <a
       mat-mini-fab
       color="warn"
       aria-label="Example icon button with a home icon"
@@ -8,30 +8,30 @@
       routerLinkActive="router-link-active"
     >
       <mat-icon>home</mat-icon>
-    </button>
+  </a>
   </div>
   <span class="everdrink-text">EVER DRINK</span>
 
   <div class="users-button-container">
-    <button
+    <a
       [routerLink]="['users']"
       routerLinkActive="router-link-active"
       mat-stroked-button
       color="accent"
     >
       Felhasználók
-    </button>
+  </a>
   </div>
 
   <div class="orders-button-container">
-    <button
+    <a
       [routerLink]="['checkouts']"
       routerLinkActive="router-link-active"
       mat-stroked-button
       color="accent"
     >
       Rendelések
-    </button>
+  </a>
   </div>
   <span class="example-spacer"></span>
   <app-menu></app-menu>

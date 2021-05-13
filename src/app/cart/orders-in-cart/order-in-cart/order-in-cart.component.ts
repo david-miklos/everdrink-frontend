@@ -18,6 +18,14 @@ export class OrderInCartComponent implements OnInit {
   ngOnInit(): void {}
 
   removeFromCart(): void {
-    this.cartService.removeOrder(this.order);
+    this.cartService.removeFromCart(this.order);
+  }
+
+  increment(): void {
+    this.cartService.incrementQuantity(this.order);
+  }
+
+  decrement(): void {
+    this.cartService.decrementQuantity(this.order);
   }
 }

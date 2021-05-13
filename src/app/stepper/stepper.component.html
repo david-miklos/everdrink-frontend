@@ -1,38 +1,175 @@
-<div class="content">
-  <mat-horizontal-stepper [linear]="isLinear">
-    <mat-step label="Szállítási adatok">
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <div style="padding: 10px; width: 50%">
-          <app-address></app-address>
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="content"
+  style="padding-top: 30px"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: #efefef; width: 50%"
+    class="stepper"
+  >
+    <mat-horizontal-stepper  style="background-color: #efefef;" [linear]="isLinear">
+      <mat-step
+        color="accent"
+        [stepControl]="addressForm"
+        [editable]="isEditable"
+      >
+        <div fxFill class="form">
+          <form [formGroup]="addressForm">
+            <ng-template matStepLabel>Szállítási adatok</ng-template>
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Ország</mat-label>
+              <mat-select formControlName="country">
+                <mat-option required value="Magyarország"
+                  >Magyarország</mat-option
+                >
+              </mat-select>
+              <mat-error>Válassza ki az országot!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Megye</mat-label>
+              <input matInput type="text" formControlName="region" required />
+              <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+              <mat-error>Adjon meg egy érvényes megyét!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Város</mat-label>
+              <input matInput type="text" formControlName="city" required />
+              <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+              <mat-error>Adjon meg egy érvényes várost!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Irányítószám</mat-label>
+              <input matInput type="text" formControlName="zip" required />
+              <mat-error>Adjon meg egy érvényes Irányítószámot!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Utca</mat-label>
+              <input matInput type="text" formControlName="street" required />
+              <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+              <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <mat-label>Utca szám</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="street_number"
+                required
+              />
+              <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+              <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFill appearance="fill">
+              <span matPrefix>+36</span>
+              <mat-label>Telefonszám</mat-label>
+              <input matInput type="text" formControlName="phone" required />
+              <mat-hint>Megfelelő formátum: 123456789</mat-hint>
+              <mat-error>Adjon meg egy érvényes telefonszámot!</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div style="padding-top: 10px; width: 20%" class="button">
+                <button
+                  fxFill
+                  mat-raised-button
+                  color="accent"
+                  matStepperNext
+                  (click)="addAddress()"
+                >
+                  <span>Tovább</span>
+                  <mat-icon>arrow_forward_ios</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="end none">
-        <button mat-flat-button color="primary" matStepperNext>Tovább</button>
-      </div>
-    </mat-step>
-    <mat-step label="Működési engedély">
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <div style="padding: 50px; width: 50%">
-          <app-file></app-file>
+      </mat-step>
+
+      <mat-step color="accent" [stepControl]="fileForm">
+        <div
+          style="padding-top: 30px"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        >
+          <span style="font-size: large; font-weight: bold"
+            >Kérem töltse fel a működési engedélyét</span
+          >
+          <span style="font-size: larger; padding-top: 10px"
+            >Megfelelő formátum .png</span
+          >
         </div>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="end none">
-        <button mat-flat-button color="primary" matStepperNext>Tovább</button>
-      </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Vége</ng-template>
-      <div fxLayout="column" fxLayoutAlign="center center" style="padding: 100px;">
-        <div fxLayout="row" fxLayoutAlign=" center">
-          <i class="material-icons" style="color: green">check_circle</i>
-          <span> Végzett a szükséges adatok kitöltésével.</span>
+        <div style="padding-top: 30px" fxFill class="form">
+          <form [formGroup]="fileForm">
+            <ng-template matStepLabel>Működési engedély</ng-template>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div>
+                <input
+                  type="file"
+                  formControlName="file"
+                  id="file"
+                  (change)="handleFileInput($event.target.files)"
+                  required
+                />
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div style="padding-top: 10px; width: 20%" class="button">
+                <button
+                  fxFill
+                  mat-raised-button
+                  color="accent"
+                  matStepperNext
+                  (click)="addFile()"
+                >
+                  <span>Tovább</span>
+                  <mat-icon>arrow_forward_ios</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="end none">
-        <button mat-flat-button color="primary" (click)="done()">
-          Tovább a főoldalra
-        </button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+      </mat-step>
+
+      <mat-step color="accent">
+        <ng-template matStepLabel>Vége</ng-template>
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          style="padding: 70px"
+        >
+          <div fxLayout="row" fxLayoutAlign=" center">
+            <i class="material-icons" style="color: green">check_circle</i>
+            <span
+              style="padding-left: 10px; font-size: large; font-weight: 500"
+            >
+              Végzett a szükséges adatok kitöltésével.</span
+            >
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div style="padding-top: 10px; width: 20%" class="button">
+            <button
+              fxFill
+              mat-raised-button
+              color="accent"
+              matStepperNext
+              (click)="done()"
+            >
+              <span>Tovább a főoldalra</span>
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
 </div>

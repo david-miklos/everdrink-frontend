@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { User } from '@core/interfaces/user.interface';
 import { FileService } from '@core/services/file.service';
 import { UserService } from '@core/services/user.service';
@@ -10,16 +10,24 @@ import { UserService } from '@core/services/user.service';
 })
 export class UserComponent implements OnInit {
   @Input() user: User = null;
+  imagePath: string = null;
 
-  constructor(private userService: UserService, private fileService: FileService) {}
+  constructor(
+    private userService: UserService,
+    public fileService: FileService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imagePath = this.constructUrl(this.user.id);
+  }
 
   approve(): void {
     this.userService.approveUser(this.user.id);
   }
 
-  onClick(): void {
-    this.fileService.getFile(this.user.id);
+  constructUrl(id: string): string {
+    const baseUrl = 'http://localhost:3000';
+    const imagePath = `${baseUrl}/user/${id}.png/getfile`;
+    return imagePath;
   }
 }

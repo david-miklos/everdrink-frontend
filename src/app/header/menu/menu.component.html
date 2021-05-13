@@ -7,21 +7,7 @@
   <mat-icon>account_circle</mat-icon>
 </button>
 <mat-menu #account="matMenu">
-  <button
-    mat-menu-item
-    [routerLink]="['/signup']"
-    routerLinkActive="router-link-active"
-  >
-    Regisztráció
-  </button>
-  <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
-    <button
-    mat-menu-item
-    [routerLink]="['/add-address']"
-    routerLinkActive="router-link-active"
-  >
-    Új cím hozzáadása
-  </button>
+  <div *ngIf="role === 'ADMIN'; else elseBlock">
     <button
       mat-menu-item
       (click)="signout()"
@@ -31,12 +17,37 @@
     </button>
   </div>
   <ng-template #elseBlock>
-    <button
+    <a
       mat-menu-item
-      [routerLink]="['/signin']"
+      [routerLink]="['/signup']"
       routerLinkActive="router-link-active"
     >
-      Bejelentkezés
-    </button>
+      Regisztráció
+    </a>
+    <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
+      <a
+        mat-menu-item
+        [routerLink]="['/add-address']"
+        routerLinkActive="router-link-active"
+      >
+        Új cím hozzáadása
+      </a>
+      <button
+        mat-menu-item
+        (click)="signout()"
+        routerLinkActive="router-link-active"
+      >
+        Kijelentkezés
+      </button>
+    </div>
+    <ng-template #elseBlock>
+      <a
+        mat-menu-item
+        [routerLink]="['/signin']"
+        routerLinkActive="router-link-active"
+      >
+        Bejelentkezés
+      </a>
+    </ng-template>
   </ng-template>
 </mat-menu>

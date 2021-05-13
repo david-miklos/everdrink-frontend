@@ -15,6 +15,7 @@ import { select } from '@ngrx/store';
 export class CartComponent implements OnInit {
   chosenAddress: AddressResponse;
   chosenShipping = 'delivery';
+  errorMsg = 'Az Ön kosara nem tartalmaz termékeket';
   constructor(
     public cartService: CartService,
     public orderService: OrderService,

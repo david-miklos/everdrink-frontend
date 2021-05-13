@@ -12,4 +12,19 @@ export const removeFromCart = createAction(
   props<{ order: Order }>()
 );
 
+export const updateOrder = createAction(
+  '[Cart] Change Order',
+  props<{ order: Order }>()
+);
+
+export const incrementQuantity = createAction(
+  '[Cart] Increment Quantity',
+  props<{ order: Order }>()
+);
+
+export const descrementQuantity = createAction(
+  '[Cart] Decrement Quantity',
+  props<{ order: Order }>()
+);
+
 export const clearCart = createAction('[Cart] Clear Cart');

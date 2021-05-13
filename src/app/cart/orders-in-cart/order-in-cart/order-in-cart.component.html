@@ -2,8 +2,8 @@
   <mat-card fxLayout="column" fxLayoutAlign=" none">
     <div>
       <mat-card-header>
-        <mat-card-title>Order</mat-card-title>
-        <mat-card-subtitle>Order Details</mat-card-subtitle>
+        <mat-card-title>Rendelés</mat-card-title>
+        <mat-card-subtitle>Rendelés adatai</mat-card-subtitle>
       </mat-card-header>
     </div>
     <div>
@@ -27,50 +27,112 @@
             fxLayoutAlign="center center"
             class="product-details"
           >
-            <div>
-              <p>Típus: {{ order.product.type }}</p>
-              <p>Alkohol tartalom: {{ order.product.alcohol_content }}</p>
-              <p>Kiszerelés: {{ order.product.packaging }}</p>
-              <p>Méret: {{ order.product.volume }}</p>
+            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+              <div>
+                <strong>Típus: </strong> <span> {{ order.product.type }}</span>
+              </div>
+              <div>
+                <strong>Alkohol tartalom: </strong>
+                <span>{{ order.product.alcohol_content }}</span>
+              </div>
+              <div>
+                <strong>Kiszerelés: </strong>
+                <span>{{ order.product.packaging }}</span>
+              </div>
+              <div>
+                <strong>Méret: </strong>
+                <span> {{ order.product.volume }}</span>
+              </div>
             </div>
           </div>
-          <div class="details">
-            <div>
-              <p>
-                Nettó ár:
-                {{ order.product.net_price * order.quantity | number }} Ft
-              </p>
-              <p>Áfa: {{ order.product.vat * order.quantity | number }} Ft</p>
-              <p>
-                Bruttó ár:
-                {{ order.product.gross_price * order.quantity | number }} Ft
-              </p>
-              <p>
-                Göngyöleg nettó ár:
-                {{ order.product.wrappage_net_price * order.quantity | number }}
-                Ft
-              </p>
-              <p>
-                Göngyöleg bruttó ár:
-                {{
-                  order.product.wrappage_gross_price * order.quantity | number
-                }}
-                Ft
-              </p>
-              <p>
-                Összesen:
-                {{
-                  (order.product.gross_price +
-                    order.product.wrappage_gross_price) *
-                    order.quantity | number
-                }}
-                Ft
-              </p>
+          <div fxLayout="row" fxLayoutAlign="center center" class="details">
+            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+              <div>
+                <strong> Nettó ár:</strong>
+                <span>
+                  {{ order.product.net_price * order.quantity | number }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Áfa: </strong>
+                <span
+                  >{{ order.product.vat * order.quantity | number }} Ft</span
+                >
+              </div>
+              <div>
+                <strong> Bruttó ár:</strong>
+                <span>
+                  {{ order.product.gross_price * order.quantity | number }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Göngyöleg nettó ár:</strong>
+                <span>
+                  {{
+                    order.product.wrappage_net_price * order.quantity | number
+                  }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Göngyöleg bruttó ár:</strong>
+                <span>
+                  {{
+                    order.product.wrappage_gross_price * order.quantity | number
+                  }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Összesen:</strong>
+                <span>
+                  {{
+                    (order.product.gross_price +
+                      order.product.wrappage_gross_price) *
+                      order.quantity | number
+                  }}
+                  Ftt</span
+                >
+              </div>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="center center" class="quantity">
-            <div>
-              <h2>Darabszám: {{ order.quantity }}</h2>
+          <div
+            style="padding-top: 5px"
+            fxLayout="row"
+            fxLayoutAlign="center"
+            class="quantity"
+          >
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <button
+              style="font-size: 25px"
+              mat-mini-fab
+              color="primary"
+              [disabled]="order.quantity < 2"
+              (click)="decrement()"
+            >
+              -
+            </button>
+          </div>
+
+
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <span
+                style="font-size: 40px; padding-left: 80px; padding-right: 80px"
+                >{{ order.quantity }}</span
+              >
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button
+                style="font-size: 25px"
+                mat-mini-fab
+                color="primary"
+                (click)="increment()"
+              >
+                +
+              </button>
             </div>
           </div>
         </mat-card-content>

@@ -1,71 +1,95 @@
-<mat-expansion-panel>
-  <!-- #enddocregion hide-toggle -->
-  <mat-expansion-panel-header>
-    <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
-      <div fxLayout="row" fxLayoutAlign=" center">
-        <span style="font-weight: 400; font-size: medium"
-          >Rendelés azonosítója:</span
-        >
-      </div>
-      <div fxLayout="row" fxLayoutAlign=" center" fxFlexOffset="3">
-        <span>{{ checkout.id }}</span>
-      </div>
-    </mat-panel-title>
-    <mat-panel-description>
-      <div>
-        <div *ngIf="checkout.shipping === 'DELIVERY'; else elseBlock">
-          Szállítás
+<div fxLayout="row" fxLayoutAlign="center center" class="content">
+  <mat-expansion-panel style="background-color: #efefef; width: 95%">
+    <!-- #enddocregion hide-toggle -->
+    <mat-expansion-panel-header>
+      <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
+        <div fxLayout="row" fxLayoutAlign=" center">
+          <span style="font-weight: 400; font-size: medium"
+            >Rendelés azonosítója:</span
+          >
         </div>
-        <ng-template #elseBlock>Személyes átvétel</ng-template>
-      </div>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-  <div
-    class="panel-content"
-    fxLayout="row"
-    fxLayoutAlign="space-evenly center" 
-    style="
-    margin: 20px;
-    background-color: #F5F5F5;"
-  >
-    <div class="user">
-      <h2>Felhasználó</h2>
-      <div
-        fxLayout="row"
-        fxLayoutAlign="center center"
-        class="product-details"
-      >
+        <div fxLayout="row" fxLayoutAlign=" center" fxFlexOffset="3">
+          <span>{{ checkout.id }}</span>
+        </div>
+      </mat-panel-title>
+      <mat-panel-description>
         <div>
-          <p>Azonosító: {{ checkout.user.id }}</p>
-          <p>E-mail: {{ checkout.user.email }}</p>
+          <div *ngIf="checkout.shipping === 'DELIVERY'; else elseBlock">
+            Szállítás
+          </div>
+          <ng-template #elseBlock>Személyes átvétel</ng-template>
         </div>
-      </div>
-    </div>
-    <div style="padding: 10px;" class="address">
-      <h2>Szállítási cím</h2>
-      <div fxLayout="row" fxLayoutAlign="space-around center">
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-card
+      class="panel-content"
+      fxLayout="row"
+      fxLayoutAlign="space-evenly center"
+      style="margin: 20px"
+    >
+      <div class="user">
+        <h2>Felhasználó</h2>
         <div
-          fxLayout="column"
-          fxLayoutAlign="space-around start"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          class="product-details"
         >
-          <span>Ország: {{ checkout.address.country }}</span>
-          <span>Megye: {{ checkout.address.region }}</span>
-          <span>Város: {{ checkout.address.city }}</span>
-          <span>Utca: {{ checkout.address.street }}</span>
-          <span>Utca szám: {{ checkout.address.street_number }}</span>
-          <span>Telefonszám: {{ checkout.address.phone }}</span>
+          <div fxLayout="column" fxLayoutAlign="space-between start">
+            <div>
+              <strong>Azonosító:</strong> <span> {{ checkout.user.id }}</span>
+            </div>
+            <div>
+              <strong>E-mail:</strong> <span> {{ checkout.user.email }}</span>
+            </div>
+          </div>
         </div>
       </div>
+      <div style="padding: 10px" class="address">
+        <h2>Szállítási cím</h2>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <div fxLayout="column" fxLayoutAlign="space-around start">
+            <div>
+              <strong>Ország:</strong
+              ><span> {{ checkout.address.country }}</span>
+            </div>
+            <div>
+              <strong>Megye: </strong><span>{{ checkout.address.region }}</span>
+            </div>
+            <div>
+              <strong>Város: </strong> <span>{{ checkout.address.city }}</span>
+            </div>
+            <div>
+              <strong>Utca: </strong>
+              <span> {{ checkout.address.street }}</span>
+            </div>
+            <div>
+              <strong>Utca szám: </strong
+              ><span>{{ checkout.address.street_number }}</span>
+            </div>
+            <div>
+              <strong>Telefonszám: </strong
+              ><span>{{ checkout.address.phone }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <div class="orders">
+      <h2>Leadott rendelések</h2>
+      <app-orders [orders]="checkout.orders"></app-orders>
     </div>
-  </div>
 
-  <div class="orders">
-    <h2>Leadott rendelések</h2>
-    <app-orders [orders]="checkout.orders"></app-orders>
-  </div>
-
-  <div fxLayout="row" fxLayoutAlign="center center" style="padding: 10px">
-    <button type="button" mat-raised-button color="accent" (click)="finalize()">Kézbesítve</button>
-  </div>
-</mat-expansion-panel>
+    <div fxLayout="row" fxLayoutAlign="center center" style="padding: 10px">
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="finalize()"
+      >
+        Kézbesítve
+      </button>
+    </div>
+  </mat-expansion-panel>
+</div>

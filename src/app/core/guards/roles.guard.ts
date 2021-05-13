@@ -11,30 +11,32 @@ import { map, take, tap } from 'rxjs/operators';
 import { AuthService } from '@core/services/auth.service';
 import { NotificationService } from '@core/services/notification.service';
 import { NullTemplateVisitor } from '@angular/compiler';
+import { LoginResponse } from '@core/interfaces/login.response.interface';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
-  isLoggedIn: boolean = null;
+export class RolesGuard implements CanActivate {
+  auth: LoginResponse = null;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private ns: NotificationService
   ) {
-    this.authService.isLoggedIn$.subscribe((data) => {
-      this.isLoggedIn = data;
+    this.authService.auth$.subscribe((data) => {
+      this.auth = data;
     });
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
-    if (!this.isLoggedIn) {
+    const expectedRole = next.data.expectedRole;
+    if (this.auth.payload.role !== expectedRole) {
       // this.router.navigate(['/']);
       this.ns.show('Hozzáférés megtagadva!');
       console.error('Access denied!');
-      return this.isLoggedIn;
+      return false;
     }
-    return this.isLoggedIn;
+    return true;
   }
 }

@@ -13,7 +13,7 @@ export const checkoutReducer = createReducer(
   on(
     CheckoutActions.finalizeCheckout,
     (state: CheckoutState, { checkout }) => ({
-      checkouts: state.checkouts.filter((item) => item.id !== checkout.id),
+      checkouts: state.checkouts.filter((stateCheckout) => stateCheckout.id !== checkout.id),
     })
   )
 );

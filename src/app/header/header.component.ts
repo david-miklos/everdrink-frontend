@@ -1,6 +1,7 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartSelectors } from '@core/selectors';
+import { AuthService } from '@core/services/auth.service';
 import { AppState } from '@core/states/app.state';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,9 +17,22 @@ export class HeaderComponent implements OnInit, DoCheck {
   // tslint:disable-next-line:no-input-rename
   @Input('matBadgeHidden') hidden = true;
   public count$: Observable<number>;
+  role: string;
 
-  constructor(public store: Store<AppState>, private router: Router) {
+  constructor(
+    public store: Store<AppState>,
+    private router: Router,
+    public authService: AuthService
+  ) {
     this.count$ = store.pipe(select(CartSelectors.selectCount));
+    this.authService.auth$.subscribe(
+      (data) => {
+        this.role = data.payload.role;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {}
@@ -32,6 +46,5 @@ export class HeaderComponent implements OnInit, DoCheck {
     } else {
       this.hidden = true;
     }
-
   }
 }

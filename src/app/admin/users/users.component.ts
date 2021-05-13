@@ -7,6 +7,7 @@ import { UserService } from '@core/services/user.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  errorMsg = 'Nincs jóváhagyásra váró felhasználó.';
   constructor(public userService: UserService) {}
 
   ngOnInit(): void {

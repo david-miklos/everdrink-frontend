@@ -13,21 +13,51 @@ import { UsersComponent } from './admin/users/users.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { CheckoutsComponent } from './admin/checkouts/checkouts.component';
+import { AuthGuard } from '@core/guards/auth.guard';
+import { RolesGuard } from '@core/guards/roles.guard';
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'cart', component: CartComponent },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AuthGuard, RolesGuard],
+    data: {
+      expectedRole: 'PARTNER',
+    },
+  },
   { path: 'address', component: AddressComponent },
   { path: 'add-address', component: AddAddressComponent },
   { path: 'stepper', component: StepperComponent },
   { path: 'file', component: FileComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'checkouts', component: CheckoutsComponent },
-  { path: 'categories', component: CategoriesComponent, },
-  { path: 'products/:id', component: ProductsComponent, },
-  { path: 'product-detail/:id', component: ProductDetailComponent, },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard, RolesGuard],
+    data: {
+      expectedRole: 'ADMIN',
+    },
+  },
+  {
+    path: 'checkouts',
+    component: CheckoutsComponent,
+    canActivate: [AuthGuard, RolesGuard],
+    data: {
+      expectedRole: 'ADMIN',
+    },
+  },
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'products/:id', component: ProductsComponent },
+  {
+    path: 'product-detail/:id',
+    component: ProductDetailComponent,
+    canActivate: [AuthGuard, RolesGuard],
+    data: {
+      expectedRole: 'PARTNER',
+    },
+  },
 ];
 
 @NgModule({

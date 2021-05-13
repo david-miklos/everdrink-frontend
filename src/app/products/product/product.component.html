@@ -1,5 +1,5 @@
 <div class="card">
-  <mat-card class="product-card">
+  <mat-card style="background-color: #efefef;" class="product-card">
     <img 
       mat-card-image
       src="/assets/mockups/beer.mockup.jpg"
@@ -13,9 +13,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <div class="cart-button-container">
-        <div fxLayout="row" fxLayoutAlign="center center" class="button">
-          <button
+      <div style="padding: 5px; padding-right: 10px;" class="cart-button-container">
+        <div fxLayout="row" fxLayoutAlign="end center" class="button">
+          <a
             mat-mini-fab
             color="accent"
             aria-label="Icon button with a cart one icon"
@@ -23,7 +23,7 @@
             routerLinkActive="router-link-active"
           >
             <mat-icon>more_vert</mat-icon>
-          </button>
+        </a>
         </div>
       </div>
     </mat-card-actions>

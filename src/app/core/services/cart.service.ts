@@ -22,12 +22,20 @@ export class CartService {
     this.total$ = store.pipe(select(CartSelectors.selectTotal));
   }
 
-  addOrder(orderToAdd: Order): void {
+  addToCart(orderToAdd: Order): void {
     this.store.dispatch(CartActions.addToCart({ order: orderToAdd }));
   }
 
-  removeOrder(orderToRemove: Order): void {
+  removeFromCart(orderToRemove: Order): void {
     this.store.dispatch(CartActions.removeFromCart({ order: orderToRemove }));
+  }
+
+  incrementQuantity(orderToIncrement: Order): void {
+    this.store.dispatch(CartActions.incrementQuantity({ order: orderToIncrement }));
+  }
+
+  decrementQuantity(orderToDecrement: Order): void {
+    this.store.dispatch(CartActions.descrementQuantity({ order: orderToDecrement }));
   }
 
   clearCart(): void {

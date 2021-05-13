@@ -12,7 +12,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categoryService.getCategories();
+    this.categoryService.getAll();
   }
 
 }

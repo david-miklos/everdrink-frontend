@@ -1,7 +1,12 @@
-<div class="content">
-  <mat-accordion>
-    <div *ngFor="let checkout of checkoutService.checkouts$ | async">
-      <app-checkout [checkout]="checkout"></app-checkout>
-    </div>
-  </mat-accordion>
+<div *ngIf="(checkoutService.checkouts$ | async).length > 0; else elseBlock">
+  <div class="content">
+    <mat-accordion>
+      <div *ngFor="let checkout of checkoutService.checkouts$ | async">
+        <app-checkout [checkout]="checkout"></app-checkout>
+      </div>
+    </mat-accordion>
+  </div>
 </div>
+<ng-template #elseBlock>
+  <app-not-found [msg]="errorMsg"></app-not-found>
+</ng-template>

@@ -44,10 +44,7 @@ export class OrderService {
       this.http
         .post(`${baseUrl}/order/create`, orderReq, { headers: header })
         .subscribe(
-          (data) => {
-            console.log(data, 'data');
-            this.ns.show('Sikeres rendeles leadas!');
-          },
+          (data) => {},
           (error) => {
             this.ns.show('HIBA! rendles leadas sikertelen!');
             console.error(error);
@@ -57,22 +54,22 @@ export class OrderService {
     this.cartService.clearCart();
   }
 
-  getOrders(checkoutId: string): Observable<Order[]> {
-    const header = new HttpHeaders().set(
-      'Authorization',
-      `Bearer ${this.token}`
-    );
-    return this.http.get<Order[]>(`${baseUrl}/order/${checkoutId}/checkout`, {
-      headers: header,
-    });
-    // .subscribe(
-    //   (data) => {
-    //     this.orders = data;
-    //   },
-    //   (error) => {
-    //     this.ns.show('HIBA! rendelés lekerese sikertelen!');
-    //     console.error(error);
-    //   }
-    // );
-  }
+  // getOrders(checkoutId: string): Observable<Order[]> {
+  //   const header = new HttpHeaders().set(
+  //     'Authorization',
+  //     `Bearer ${this.token}`
+  //   );
+  //   return this.http.get<Order[]>(`${baseUrl}/order/${checkoutId}/checkout`, {
+  //     headers: header,
+  //   });
+  //   // .subscribe(
+  //   //   (data) => {
+  //   //     this.orders = data;
+  //   //   },
+  //   //   (error) => {
+  //   //     this.ns.show('HIBA! rendelés lekerese sikertelen!');
+  //   //     console.error(error);
+  //   //   }
+  //   // );
+  // }
 }

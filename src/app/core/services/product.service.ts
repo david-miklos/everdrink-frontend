@@ -1,39 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Filter } from '@core/interfaces/filter.interface';
 import { Product } from '@core/interfaces/product.interface';
 import { NotificationService } from './notification.service';
 
 const baseUrl = 'http://localhost:3000';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-  products: Product[];
-  product: Product;
+  products: Product[] = null;
+  product: Product = null;
   constructor(private http: HttpClient, private ns: NotificationService) {}
 
   getProducts(categoryId: string): void {
     this.http
       .get<Product[]>(`${baseUrl}/product/${categoryId}/category`)
-      .subscribe(data => {
+      .subscribe((data) => {
         this.products = data;
       });
   }
 
   getProduct(id: string): void {
-    this.http
-      .get<Product>(`${baseUrl}/product/${id}/get`)
-      .subscribe(data => {
-        this.product = data;
-      });
+    this.http.get<Product>(`${baseUrl}/product/${id}/get`).subscribe((data) => {
+      this.product = data;
+    });
   }
-
-  // getProductBrands(categoryId: string): void {
-  //   this.http
-  //     .get<string[]>(`${baseUrl}/product/${categoryId}/brands`)
-  //     .subscribe(data => {
-  //       this.brands = data;
-  //     });
-  // }
 }

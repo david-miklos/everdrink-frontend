@@ -1,84 +1,119 @@
 <div style="margin: 20px" class="card">
-    <mat-card fxLayout="column" fxLayoutAlign=" none">
-      <div>
-        <mat-card-header>
-          <mat-card-title>Rendelés</mat-card-title>
-          <mat-card-subtitle>Rendelés adatai</mat-card-subtitle>
-        </mat-card-header>
-      </div>
-      <div>
-        <div class="content">
-          <mat-card-content fxLayout="row" fxLayoutAlign="space-around none">
-            <div style="padding: 20px;" fxLayout="column" fxLayoutAlign="center center" class="image">
+  <mat-card fxLayout="column" fxLayoutAlign=" none">
+    <div>
+      <mat-card-header>
+        <mat-card-title>Rendelés</mat-card-title>
+        <mat-card-subtitle>Rendelés adatai</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <div>
+      <div class="content">
+        <mat-card-content fxLayout="row" fxLayoutAlign="space-around none">
+          <div fxLayout="column" fxLayoutAlign="center center" class="image">
+            <div>
+              <h2>{{ order.product.brand }} {{ order.product.name }}</h2>
+            </div>
+            <div>
+              <img
+                mat-card-image
+                src="/assets/mockups/beer.mockup.jpg"
+                alt="Photo of a beer bottle"
+                style="width: 100px; height: 100px; margin-top: 5px"
+              />
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="center center"
+            class="product-details"
+          >
+            <div fxLayout="column" fxLayoutAlign="space-evenly start">
               <div>
-                <h3>{{ order.product.brand }} {{ order.product.name }}</h3>
+                <strong>Típus: </strong> <span> {{ order.product.type }}</span>
               </div>
               <div>
-                <img
-                  mat-card-image
-                  src="/assets/mockups/beer.mockup.jpg"
-                  alt="Photo of a beer bottle"
-                  style="width: 100px; height: 100px; margin-top: 5px"
-                />
+                <strong>Alkohol tartalom: </strong>
+                <span>{{ order.product.alcohol_content }}</span>
+              </div>
+              <div>
+                <strong>Kiszerelés: </strong>
+                <span>{{ order.product.packaging }}</span>
+              </div>
+              <div>
+                <strong>Méret: </strong>
+                <span> {{ order.product.volume }}</span>
               </div>
             </div>
-            <div
-            style="padding: 20px;"
-              fxLayout="row"
-              fxLayoutAlign="center center"
-              class="product-details"
-            >
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="details">
+            <div fxLayout="column" fxLayoutAlign="space-evenly start">
               <div>
-                <p>Típus: {{ order.product.type }}</p>
-                <p>Alkohol tartalom: {{ order.product.alcohol_content }}</p>
-                <p>Kiszerelés: {{ order.product.packaging }}</p>
-                <p>Méret: {{ order.product.volume }}</p>
+                <strong> Nettó ár:</strong>
+                <span>
+                  {{ order.product.net_price * order.quantity | number }}
+                  Ft</span
+                >
               </div>
-            </div>
-            <div style="padding: 20px;" class="details">
               <div>
-                <p>
-                  Nettó ár:
-                  {{ order.product.net_price * order.quantity | number }} Ft
-                </p>
-                <p>Áfa: {{ order.product.vat * order.quantity | number }} Ft</p>
-                <p>
-                  Bruttó ár:
-                  {{ order.product.gross_price * order.quantity | number }} Ft
-                </p>
-                <p>
-                  Göngyöleg nettó ár:
-                  {{ order.product.wrappage_net_price * order.quantity | number }}
-                  Ft
-                </p>
-                <p>
-                  Göngyöleg bruttó ár:
+                <strong> Áfa: </strong>
+                <span
+                  >{{ order.product.vat * order.quantity | number }} Ft</span
+                >
+              </div>
+              <div>
+                <strong> Bruttó ár:</strong>
+                <span>
+                  {{ order.product.gross_price * order.quantity | number }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Göngyöleg nettó ár:</strong>
+                <span>
+                  {{
+                    order.product.wrappage_net_price * order.quantity | number
+                  }}
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Göngyöleg bruttó ár:</strong>
+                <span>
                   {{
                     order.product.wrappage_gross_price * order.quantity | number
                   }}
-                  Ft
-                </p>
-                <p>
-                  Összesen:
+                  Ft</span
+                >
+              </div>
+              <div>
+                <strong> Összesen:</strong>
+                <span>
                   {{
                     (order.product.gross_price +
                       order.product.wrappage_gross_price) *
                       order.quantity | number
                   }}
-                  Ft
-                </p>
+                  Ftt</span
+                >
               </div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="quantity">
-              <div>
-                <h2>Darabszám: {{ order.quantity }}</h2>
-              </div>
+          </div>
+          <div
+            style="padding-top: 5px;padding-left: 80px;"
+            fxLayout="row"
+            fxLayoutAlign="center"
+            class="quantity"
+          >
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <span style="font-size: large;">Darabszám: </span>
+              <span
+                style="font-size: 40px; padding-left: 10px"
+                >{{ order.quantity }}</span
+              >
             </div>
-          </mat-card-content>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center none" class="actions">
-        </div>
+          </div>
+        </mat-card-content>
       </div>
-    </mat-card>
-  </div>
-  
+    </div>
+  </mat-card>
+</div>

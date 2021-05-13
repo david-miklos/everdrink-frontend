@@ -7,7 +7,17 @@ import { AuthService } from '@core/services/auth.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  role: string;
+  constructor(public authService: AuthService) {
+    this.authService.auth$.subscribe(
+      (data) => {
+        this.role = data.payload.role;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   ngOnInit(): void {}
 

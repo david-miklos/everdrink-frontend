@@ -20,7 +20,6 @@ const baseUrl = 'http://localhost:3000';
 })
 export class CheckoutService {
   private token: string = null;
-  // checkouts: CheckoutResponse[];
   public checkouts$: Observable<CheckoutResponse[]>;
 
   constructor(
@@ -48,7 +47,6 @@ export class CheckoutService {
       })
       .subscribe(
         (data) => {
-          console.log(data);
           this.store.dispatch(CheckoutActions.addCheckout({ checkouts: data }));
         },
         (error) => {
@@ -69,13 +67,13 @@ export class CheckoutService {
       })
       .subscribe(
         (data) => {
-          console.log(data);
           this.store.dispatch(
             CheckoutActions.finalizeCheckout({ checkout: data })
           );
+          this.ns.show('Sikeres redelés véglegesítés!');
         },
         (error) => {
-          this.ns.show('HIBA! Rendelés veglegesitese sikertelen!');
+          this.ns.show('HIBA! Rendelés véglegesítése sikertelen!');
           console.error(error);
         }
       );
@@ -98,7 +96,7 @@ export class CheckoutService {
         (data) => {
           const checkoutId = data.id;
           this.orderService.addOrders(checkoutId);
-          this.ns.show('Sikeres redelés veglegesites!');
+          this.ns.show('Sikeres redelés véglegesítés!');
         },
         (error) => {
           this.ns.show('HIBA! Redelés leadasa sikertelen!');

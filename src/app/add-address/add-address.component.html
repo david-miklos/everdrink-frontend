@@ -1,18 +1,92 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="content">
-  <div
-    style="width: 30%"
-    fxLayout="row"
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="content"
+  style="padding-top: 30px"
+>
+  <mat-card
+    fxLayout="column"
     fxLayoutAlign="center center"
-    class="header"
+    style="background-color: #efefef; width: 50%"
   >
-    <h1>Új cím hozzáadása</h1>
-  </div>
-  <div
-    style="width: 30%; padding-top: 10px"
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    class="address"
-  >
-    <app-address></app-address>
-  </div>
+    <div
+      style="width: 30%"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="header"
+    >
+      <h1>Új cím hozzáadása</h1>
+    </div>
+    <div fxFill class="form">
+      <form
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        [formGroup]="addressForm"
+        (ngSubmit)="submitAddress(addressForm)"
+        novalidate
+      >
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Ország</mat-label>
+          <mat-select formControlName="country">
+            <mat-option required value="Magyarország">Magyarország</mat-option>
+          </mat-select>
+          <mat-error>Válassza ki az országot!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Megye</mat-label>
+          <input matInput type="text" formControlName="region" required />
+          <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+          <mat-error>Adjon meg egy érvényes megyét!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Város</mat-label>
+          <input matInput type="text" formControlName="city" required />
+          <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+          <mat-error>Adjon meg egy érvényes várost!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Irányítószám</mat-label>
+          <input matInput type="text" formControlName="zip" required />
+          <mat-error>Adjon meg egy érvényes Irányítószámot!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Utca</mat-label>
+          <input matInput type="text" formControlName="street" required />
+          <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+          <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Utca szám</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="street_number"
+            required
+          />
+          <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
+          <mat-error>Adjon meg egy érvényes utcát!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill appearance="fill">
+          <span matPrefix>+36</span>
+          <mat-label>Telefonszám</mat-label>
+          <input matInput type="text" formControlName="phone" required />
+          <mat-hint>Megfelelő formátum: 123456789</mat-hint>
+          <mat-error>Adjon meg egy érvényes telefonszámot!</mat-error>
+        </mat-form-field>
+
+        <div style="padding-top: 10px; width: 50%" class="button">
+          <button fxFill type="submit" mat-raised-button color="accent">
+            Cím hozzáadása
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- <app-address></app-address> -->
+  </mat-card>
 </div>

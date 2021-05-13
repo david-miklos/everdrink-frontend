@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Address } from '@core/interfaces/address.interface';
 import { AddressResponse } from '@core/interfaces/address.response.interface';
 import { AuthService } from './auth.service';
@@ -19,7 +18,6 @@ export class AddressService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
     private authService: AuthService,
     private ns: NotificationService
   ) {
@@ -36,9 +34,7 @@ export class AddressService {
     );
     this.http.post<Address>(`${baseUrl}/address/create`, address, { headers: header }).subscribe(
       (data) => {
-        // this.router.navigate(['file']);
         this.ns.show('Sikeresen rögzítettük szállítási adatait!');
-        console.log(data);
       },
       (error) => {
         this.ns.show('HIBA! Nem sikerült rögzíteni szállítási adatait!');
@@ -56,7 +52,6 @@ export class AddressService {
     .get<AddressResponse[]>(`${baseUrl}/address/${this.userId}/user`, { headers: header })
     .subscribe(
       (data) => {
-        console.log(data);
         this.userAddresses = data;
       },
       (error) => {
@@ -72,7 +67,7 @@ export class AddressService {
       `Bearer ${this.token}`
     );
     this.http
-    .get<AddressResponse[]>(`${baseUrl}/address/admin/get`, { headers: header })
+    .get<AddressResponse[]>(`${baseUrl}/address/admin`, { headers: header })
     .subscribe(
       (data) => {
         this.adminAddresses = data;

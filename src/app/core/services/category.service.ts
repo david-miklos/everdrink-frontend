@@ -11,23 +11,29 @@ const baseUrl = 'http://localhost:3000';
 })
 export class CategoryService {
   categories: Category[];
-  products: Product[];
+  category: Category;
+
   constructor(private http: HttpClient, private ns: NotificationService) {}
 
-  getCategories(): void {
-    // const header = new HttpHeaders().set(
-    //     'Authorization', `Bearer ${localStorage.getItem('access_token')}`
-    // );
-    this.http.get<Category[]>(`${baseUrl}/category`).subscribe((data) => {
-      this.categories = data;
-    });
+  getAll(): void {
+    this.http.get<Category[]>(`${baseUrl}/category`).subscribe(
+      (data) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  getProducts(categoryName: string): void {
-    this.http
-      .get<Product[]>(`${baseUrl}/category/${categoryName}`)
-      .subscribe(data => {
-        this.products = data;
-      });
+  getOne(id: string): void {
+    this.http.get<Category>(`${baseUrl}/category/${id}/get`).subscribe(
+      (data) => {
+        this.category = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

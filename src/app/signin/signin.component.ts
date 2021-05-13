@@ -30,7 +30,6 @@ export class SigninComponent implements OnInit {
   signin(form: FormGroup): void {
     if (form.valid) {
       this.authService.signin(form.value as LoginUser);
-      this.router.navigate(['']);
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

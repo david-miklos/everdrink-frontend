@@ -1,60 +1,58 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="content">
-  <div
-    style="width: 30%"
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    class="header"
-  >
-    <h1>Bejelentkezés</h1>
-  </div>
-  <div
-    style="width: 50%; padding-top: 10px"
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    class="form"
-  >
-    <form
-      fxLayout="column"
+<div fxLayout="row" fxLayoutAlign="center center" class="content" style="padding-top: 100px;">
+  <mat-card fxLayout="column" fxLayoutAlign="center center" style="background-color: #efefef; width: 30%">
+    <div
+      style="width: 30%"
+      fxLayout="row"
       fxLayoutAlign="center center"
-      [formGroup]="signinForm"
-      (ngSubmit)="signin(signinForm)"
-      novalidate
+      class="header"
     >
-      <mat-form-field fxFill appearance="fill">
-        <mat-label>Az Ön e-mail címe</mat-label>
-        <input matInput type="email" formControlName="email" required />
-        <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
-        <mat-error
-          >Adja meg a regisztráció során használt E-mail címét!</mat-error
-        >
-      </mat-form-field>
-
-      <mat-form-field fxFill appearance="fill">
-        <mat-label>Választott jelszava</mat-label>
-        <mat-pass-toggle-visibility
-          #toggle_first
-          matSuffix
-        ></mat-pass-toggle-visibility>
-        <input
-          matInput
-          #password
-          type="password"
-          [type]="toggle_first.type"
-          formControlName="password"
-          required
-        />
-        <mat-error>Jelszó kitöltése kötelező!</mat-error>
-      </mat-form-field>
-
-      <div
-      style="padding-top: 10px;"
-      class="button"
+      <h1>Bejelentkezés</h1>
+    </div>
+    <div
       fxFill
+      class="form"
+    >
+      <form
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        [formGroup]="signinForm"
+        (ngSubmit)="signin(signinForm)"
+        novalidate
       >
-        <button fxFill type="submit" mat-raised-button color="accent">
-          Bejelentkezés
-        </button>
-      </div>
-    </form>
-  </div>
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Az Ön e-mail címe</mat-label>
+          <input matInput type="email" formControlName="email" required />
+          <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
+          <mat-error
+            >Adja meg a regisztráció során használt E-mail címét!</mat-error
+          >
+        </mat-form-field>
+  
+        <mat-form-field fxFill appearance="fill">
+          <mat-label>Választott jelszava</mat-label>
+          <mat-pass-toggle-visibility
+            #toggle_first
+            matSuffix
+          ></mat-pass-toggle-visibility>
+          <input
+            matInput
+            #password
+            type="password"
+            [type]="toggle_first.type"
+            formControlName="password"
+            required
+          />
+          <mat-error>Jelszó kitöltése kötelező!</mat-error>
+        </mat-form-field>
+  
+        <div
+        style="padding-top: 10px; width: 50%" class="button"
+        >
+          <button fxFill type="submit" mat-raised-button color="accent">
+            Bejelentkezés
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card>  
 </div>

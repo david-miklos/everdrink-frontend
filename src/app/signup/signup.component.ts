@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
       this.ns.show('RENDBEN! Adatok megfelelőek!');
       delete form.value.passwordConfirm;
       this.authService.signup(form.value as LoginUser);
-      this.router.navigate(['stepper']);
+
       // this.signupForm.reset();
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');

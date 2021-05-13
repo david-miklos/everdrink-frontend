@@ -4,7 +4,7 @@ import * as fromRouter from '@ngrx/router-store';
 import { cartReducer } from '@core/reducers/cart.reducer';
 import { AppState } from '@core/states/app.state';
 import { authReducer } from '@core/reducers/auth.reducer';
-import { usersReducer } from '@core/reducers/users.reducer';
+import { userReducer } from '@core/reducers/user.reducer';
 import { checkoutReducer } from '@core/reducers/checkout.reducer';
 
 export const ROOT_REDUCERS = new InjectionToken<
@@ -13,7 +13,7 @@ export const ROOT_REDUCERS = new InjectionToken<
   factory: () => ({
     cart: cartReducer,
     auth: authReducer,
-    users: usersReducer,
+    user: userReducer,
     checkout: checkoutReducer,
     router: fromRouter.routerReducer,
   }),

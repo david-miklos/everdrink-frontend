@@ -1,57 +1,125 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="card">
-  <mat-card class="product-card">
-    <img
-      mat-card-image
-      src="/assets/mockups/beer.mockup.jpg"
-      alt="Photo of a beer bottle"
-    />
-    <mat-card-content>
-      <div fxLayout="column" fxLayoutAlign="center center" class="content">
-        <h2>{{ this.productService.product.brand }}</h2>
-        <h2>{{ this.productService.product.name }}</h2>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="space-evenly start" class="content">
-        <h3>Típus: {{ this.productService.product.type }}</h3>
-        <h3>
-          Alkohol tartalom: {{ this.productService.product.alcohol_content }}
-        </h3>
-        <h3>Kiszerelés: {{ this.productService.product.packaging }}</h3>
-        <h3>Méret: {{ this.productService.product.volume }}</h3>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <form
-        fxLayout="row"
-        fxLayoutAlign="space-around center"
-        [formGroup]="quantityForm"
-        (ngSubmit)="quantity(quantityForm)"
-        novalidate
-      >
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>Darabszám</mat-label>
-            <input
-              matInput
-              type="number"
-              value="42"
-              min="1"
-              formControlName="quantity"
-              required
-            />
-          </mat-form-field>
+<div
+  *ngIf="productService.product"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="card"
+>
+  <mat-card style="background-color: #efefef; width: 50%" class="product-card">
+    <div fxLayout="row" class="content">
+      <div style="width: 50%" class="left">
+        <div fxLayout="row" fxLayoutAlign="start center" class="content">
+          <h2 fxFlexOffset="5">{{ this.productService.product.brand }}</h2>
+          <h2 fxFlexOffset="2">{{ this.productService.product.name }}</h2>
         </div>
-        <div>
+
+        <div
+          style="padding-top: 20px"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <img
+            mat-card-image
+            style="width: 100%"
+            src="/assets/mockups/beer.mockup.jpg"
+            alt="Photo of a beer bottle"
+          />
+        </div>
+      </div>
+      <div fxFlexOffset="10" fxLayout="column" style="width: 50%" class="right">
+        <mat-card-content fxLayout="column" fxFlexOffset="30">
+          <div fxLayout="column" fxLayoutAlign="space-evenly start">
+            <div style="padding: 5px;">
+              <strong style="font-size: larger;">
+                Típus:
+              </strong>
+              <span style="font-size: large;">
+                {{ this.productService.product.type }}
+              </span>
+            </div>
+            <div style="padding: 5px;">
+              <strong style="font-size: larger;">
+                Alkohol tartalom:
+              </strong>
+              <span style="font-size: large;">
+                {{ this.productService.product.alcohol_content }}
+              </span>
+            </div>
+            <div style="padding: 5px;">
+              <strong style="font-size: larger;">
+                Kiszerelés: 
+              </strong>
+              <span style="font-size: large;">
+                {{ this.productService.product.packaging }}
+              </span>
+            </div>
+            <div style="padding: 5px;">
+              <strong style="font-size: larger;">
+                Méret:
+              </strong>
+              <span style="font-size: large;">
+                {{ this.productService.product.volume }}
+              </span>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
+    <div class="actions">
+      <mat-card-actions>
+        <div
+          style="padding-top: 5px"
+          fxLayout="row"
+          fxLayoutAlign="center"
+          class="quantity"
+        >
+          <div>
+            <button
+              style="font-size: 25px"
+              mat-mini-fab
+              color="primary"
+              [disabled]="quantity < 2"
+              (click)="decrement()"
+            >
+              -
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <span
+              style="font-size: 40px; padding-left: 80px; padding-right: 80px"
+              >{{ quantity }}</span
+            >
+          </div>
+
+          <div>
+            <button
+              style="font-size: 25px"
+              mat-mini-fab
+              color="primary"
+              (click)="increment()"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <div
+          style="padding-top: 50px"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          class="toCart"
+        >
           <button
-            mat-mini-fab
+            mat-raised-button
             color="accent"
             aria-label="Icon button with a cart one icon"
-            type="submit"
-
+            (click)="addToCart()"
           >
+            <span style="padding-right: 5px;">Kosárba</span>
             <mat-icon>add_shopping_cart</mat-icon>
           </button>
         </div>
-      </form>
-    </mat-card-actions>
+      </mat-card-actions>
+    </div>
   </mat-card>
 </div>

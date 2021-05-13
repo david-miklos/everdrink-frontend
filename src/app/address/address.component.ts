@@ -79,7 +79,6 @@ export class AddressComponent implements OnInit {
   submitAddress(form: FormGroup): void {
     if (form.valid) {
       this.addressService.addAddress(form.value as Address);
-      console.log(form.value);
     } else {
       this.ns.show('HIBA! Adatok nem megfelelőek!');
     }

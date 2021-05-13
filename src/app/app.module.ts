@@ -64,6 +64,9 @@ import { OrderInCartComponent } from './cart/orders-in-cart/order-in-cart/order-
 import { OrdersInCartComponent } from './cart/orders-in-cart/orders-in-cart.component';
 import { OrdersComponent } from './admin/checkouts/checkout/orders/orders.component';
 import { OrderComponent } from './admin/checkouts/checkout/orders/order/order.component';
+import { AuthGuard } from '@core/guards/auth.guard';
+import { RolesGuard } from '@core/guards/roles.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -111,6 +114,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AddAddressComponent,
     OrdersComponent,
     OrderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -172,7 +176,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatExpansionModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthGuard, RolesGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
