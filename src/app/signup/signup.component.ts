@@ -5,7 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { MatchValidation } from '@core/validators/match.validator';
 import { AuthService } from '@core/services/auth.service';
 import { LoginUser } from '@core/interfaces/login.user.interface';
-import { Router } from '@angular/router';
 
 const RegExpValidator = {
   lowerCase: RegExp(/^(?=.*?[a-z])/),
@@ -19,13 +18,13 @@ const RegExpValidator = {
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  
   public signupForm: FormGroup;
 
   constructor(
     private ns: NotificationService,
     protected authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) {
     this.signupForm = this.formBuilder.group(
       {

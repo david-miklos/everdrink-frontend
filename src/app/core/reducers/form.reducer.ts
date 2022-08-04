@@ -1,5 +1,3 @@
-import {Action} from '@ngrx/store';
-
 export const SET_FORM = 'SET_FORM';
 
 export function formReducer(state = [], action): any {
