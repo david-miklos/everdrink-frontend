@@ -31,7 +31,7 @@ export class SigninComponent implements OnInit {
     if (form.valid) {
       this.authService.signin(form.value as LoginUser);
     } else {
-      this.ns.show('HIBA! Adatok nem megfelelőek!');
+      this.ns.show('ERROR! The data is not valid!');
     }
   }
 }

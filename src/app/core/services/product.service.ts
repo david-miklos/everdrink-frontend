@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Filter } from '@core/interfaces/filter.interface';
 import { Product } from '@core/interfaces/product.interface';
 import { NotificationService } from './notification.service';
 

@@ -39,10 +39,10 @@ export class FileService {
       .post<File>(`${baseUrl}/user/upload`, formData, { headers: header })
       .subscribe(
         (data) => {
-          this.ns.show('Sikeres filefeltöltés!');
+          this.ns.show('File upload successful!');
         },
         (error) => {
-          this.ns.show('HIBA! Nem sikerült a filefeltöltés!');
+          this.ns.show('ERROR! File upload unsuccessful!');
           console.error(error);
         }
       );
@@ -53,42 +53,4 @@ export class FileService {
     console.log(this.imagePath);
   }
 
-  // getFile(userId: string): void {
-  //   const header = new HttpHeaders().set(
-  //     'Authorization',
-  //     `Bearer ${this.token}`
-  //   );
-  //   const filepath = `${userId}.png`;
-  //   this.http
-  //     .get(`${baseUrl}/user/${filepath}/getfile`, {
-  //       headers: header,
-  //       responseType: 'blob',
-  //     })
-  //     .subscribe(
-  //       (data) => {
-  //         this.ns.show('Sikeres filelekeres!');
-  //         console.log(data);
-  //         console.log(typeof data);
-  //         this.createImageFromBlob(data);
-  //       },
-  //       (error) => {
-  //         this.ns.show('HIBA! Nem sikerült a filefeltöltés!');
-  //         console.error('oops', error);
-  //       }
-  //     );
-  // }
-
-  // createImageFromBlob(image: Blob): void {
-  //   const reader = new FileReader();
-  //   reader.addEventListener(
-  //     'load',
-  //     () => {
-  //       this.image = reader.result;
-  //     },
-  //     false
-  //   );
-  //   if (image) {
-  //     reader.readAsDataURL(image);
-  //   }
-  // }
 }

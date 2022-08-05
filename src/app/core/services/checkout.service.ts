@@ -50,7 +50,7 @@ export class CheckoutService {
           this.store.dispatch(CheckoutActions.addCheckout({ checkouts: data }));
         },
         (error) => {
-          this.ns.show('HIBA! Végleges rendelés lekérése sikertelen!');
+          this.ns.show("ERROR! Couldn't get confirmed order!");
           console.error(error);
         }
       );
@@ -70,10 +70,10 @@ export class CheckoutService {
           this.store.dispatch(
             CheckoutActions.finalizeCheckout({ checkout: data })
           );
-          this.ns.show('Sikeres redelés véglegesítés!');
+          this.ns.show('Order confirm successful!');
         },
         (error) => {
-          this.ns.show('HIBA! Rendelés véglegesítése sikertelen!');
+          this.ns.show('ERROR! Order confirm successful!');
           console.error(error);
         }
       );
@@ -96,10 +96,10 @@ export class CheckoutService {
         (data) => {
           const checkoutId = data.id;
           this.orderService.addOrders(checkoutId);
-          this.ns.show('Sikeres redelés véglegesítés!');
+          this.ns.show('Order confirm successful!');
         },
         (error) => {
-          this.ns.show('HIBA! Redelés leadasa sikertelen!');
+          this.ns.show('ERROR! Order confirm unsuccessful!');
           console.error(error);
         }
       );

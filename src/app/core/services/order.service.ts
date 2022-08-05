@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from '@core/interfaces/order.interface';
-import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { CartService } from './cart.service';
 import { NotificationService } from './notification.service';
@@ -44,9 +43,9 @@ export class OrderService {
       this.http
         .post(`${baseUrl}/order/create`, orderReq, { headers: header })
         .subscribe(
-          (data) => {},
+          (data) => { },
           (error) => {
-            this.ns.show('HIBA! rendles leadas sikertelen!');
+            this.ns.show("ERROR! Couldn't create order!");
             console.error(error);
           }
         );
@@ -54,22 +53,4 @@ export class OrderService {
     this.cartService.clearCart();
   }
 
-  // getOrders(checkoutId: string): Observable<Order[]> {
-  //   const header = new HttpHeaders().set(
-  //     'Authorization',
-  //     `Bearer ${this.token}`
-  //   );
-  //   return this.http.get<Order[]>(`${baseUrl}/order/${checkoutId}/checkout`, {
-  //     headers: header,
-  //   });
-  //   // .subscribe(
-  //   //   (data) => {
-  //   //     this.orders = data;
-  //   //   },
-  //   //   (error) => {
-  //   //     this.ns.show('HIBA! rendelés lekerese sikertelen!');
-  //   //     console.error(error);
-  //   //   }
-  //   // );
-  // }
 }

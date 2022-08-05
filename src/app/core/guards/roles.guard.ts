@@ -6,11 +6,8 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
-
 import { AuthService } from '@core/services/auth.service';
 import { NotificationService } from '@core/services/notification.service';
-import { NullTemplateVisitor } from '@angular/compiler';
 import { LoginResponse } from '@core/interfaces/login.response.interface';
 
 @Injectable()
@@ -32,8 +29,7 @@ export class RolesGuard implements CanActivate {
   ): boolean | Observable<boolean> | Promise<boolean> {
     const expectedRole = next.data.expectedRole;
     if (this.auth.payload.role !== expectedRole) {
-      // this.router.navigate(['/']);
-      this.ns.show('Hozzáférés megtagadva!');
+      this.ns.show('Access denied!');
       console.error('Access denied!');
       return false;
     }

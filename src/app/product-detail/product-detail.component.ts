@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthSelectors } from '@core/selectors';
 import { CartService } from '@core/services/cart.service';
 import { ProductService } from '@core/services/product.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '@core/states/app.state';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,8 +18,11 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public productService: ProductService,
-    public cartService: CartService
-  ) {}
+    public cartService: CartService,
+    public store: Store<AppState>
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {

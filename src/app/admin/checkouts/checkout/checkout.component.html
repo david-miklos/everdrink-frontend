@@ -5,7 +5,7 @@
       <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
         <div fxLayout="row" fxLayoutAlign=" center">
           <span style="font-weight: 400; font-size: medium"
-            >Rendelés azonosítója:</span
+            >Order ID:</span
           >
         </div>
         <div fxLayout="row" fxLayoutAlign=" center" fxFlexOffset="3">
@@ -15,9 +15,9 @@
       <mat-panel-description>
         <div>
           <div *ngIf="checkout.shipping === 'DELIVERY'; else elseBlock">
-            Szállítás
+            Delivery
           </div>
-          <ng-template #elseBlock>Személyes átvétel</ng-template>
+          <ng-template #elseBlock>Personal reception</ng-template>
         </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
@@ -29,7 +29,7 @@
       style="margin: 20px"
     >
       <div class="user">
-        <h2>Felhasználó</h2>
+        <h2>User</h2>
         <div
           fxLayout="row"
           fxLayoutAlign="center center"
@@ -37,7 +37,7 @@
         >
           <div fxLayout="column" fxLayoutAlign="space-between start">
             <div>
-              <strong>Azonosító:</strong> <span> {{ checkout.user.id }}</span>
+              <strong>ID:</strong> <span> {{ checkout.user.id }}</span>
             </div>
             <div>
               <strong>E-mail:</strong> <span> {{ checkout.user.email }}</span>
@@ -46,29 +46,29 @@
         </div>
       </div>
       <div style="padding: 10px" class="address">
-        <h2>Szállítási cím</h2>
+        <h2>Delivery addess</h2>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <div fxLayout="column" fxLayoutAlign="space-around start">
             <div>
-              <strong>Ország:</strong
+              <strong>Country:</strong
               ><span> {{ checkout.address.country }}</span>
             </div>
             <div>
-              <strong>Megye: </strong><span>{{ checkout.address.region }}</span>
+              <strong>Region: </strong><span>{{ checkout.address.region }}</span>
             </div>
             <div>
-              <strong>Város: </strong> <span>{{ checkout.address.city }}</span>
+              <strong>City: </strong> <span>{{ checkout.address.city }}</span>
             </div>
             <div>
-              <strong>Utca: </strong>
+              <strong>Street: </strong>
               <span> {{ checkout.address.street }}</span>
             </div>
             <div>
-              <strong>Utca szám: </strong
+              <strong>Street number: </strong
               ><span>{{ checkout.address.street_number }}</span>
             </div>
             <div>
-              <strong>Telefonszám: </strong
+              <strong>Phone number: </strong
               ><span>{{ checkout.address.phone }}</span>
             </div>
           </div>
@@ -77,7 +77,7 @@
     </mat-card>
 
     <div class="orders">
-      <h2>Leadott rendelések</h2>
+      <h2>Confirmed orders</h2>
       <app-orders [orders]="checkout.orders"></app-orders>
     </div>
 
@@ -88,7 +88,7 @@
         color="accent"
         (click)="finalize()"
       >
-        Kézbesítve
+        Delivered
       </button>
     </div>
   </mat-expansion-panel>

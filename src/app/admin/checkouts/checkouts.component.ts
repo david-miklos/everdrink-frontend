@@ -7,7 +7,7 @@ import { CheckoutService } from '@core/services/checkout.service';
   styleUrls: ['./checkouts.component.scss']
 })
 export class CheckoutsComponent implements OnInit {
-  errorMsg = 'Nincs leadott rendelés.';
+  errorMsg = 'No confirmed orders.';
   constructor(public checkoutService: CheckoutService) {
   }
 

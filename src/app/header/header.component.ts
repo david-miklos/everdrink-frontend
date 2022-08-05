@@ -12,9 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, DoCheck {
-  // tslint:disable-next-line:no-input-rename
   @Input('matBadge') content: string | number | undefined | null;
-  // tslint:disable-next-line:no-input-rename
   @Input('matBadgeHidden') hidden = true;
   public count$: Observable<number>;
   role: string;

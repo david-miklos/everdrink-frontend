@@ -80,7 +80,7 @@ export class AddAddressComponent implements OnInit {
     if (form.valid) {
       this.addressService.addAddress(form.value as Address);
     } else {
-      this.ns.show('HIBA! Adatok nem megfelelőek!');
+      this.ns.show('ERROR! The data is not valid!');
     }
   }
 }

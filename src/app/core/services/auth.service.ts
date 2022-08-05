@@ -34,12 +34,12 @@ export class AuthService {
   signup(loginUser: LoginUser): void {
     this.http.post<LoginUser>(`${baseUrl}/auth/signup`, loginUser).subscribe(
       (data) => {
-        this.ns.show('Sikeres regisztráció!');
+        this.ns.show('Registration successful!');
         this.signinForStepper(loginUser);
         this.router.navigate(['stepper']);
       },
       (error) => {
-        this.ns.show('HIBA! Regisztráció sikertelen!');
+        this.ns.show('ERROR! Registration unsuccessful!');
         console.error(error);
       }
     );
@@ -51,11 +51,11 @@ export class AuthService {
       .subscribe(
         (data) => {
           this.store.dispatch(AuthActions.login({ auth: data }));
-          this.ns.show('Sikeres bejelentkezés!');
+          this.ns.show('Login successful!');
           this.router.navigate(['']);
         },
         (error) => {
-          this.ns.show('HIBA! Bejelentkezés sikertelen!');
+          this.ns.show('ERROR! Login unsuccessful!');
           console.error(error);
         }
       );
@@ -67,10 +67,10 @@ export class AuthService {
       .subscribe(
         (data) => {
           this.store.dispatch(AuthActions.login({ auth: data }));
-          this.ns.show('Sikeres bejelentkezés!');
+          this.ns.show('Login successful!');
         },
         (error) => {
-          this.ns.show('HIBA! Bejelentkezés sikertelen!');
+          this.ns.show('ERROR! Login unsuccessful!');
           console.error(error);
         }
       );

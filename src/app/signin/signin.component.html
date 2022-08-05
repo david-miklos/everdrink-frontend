@@ -6,7 +6,7 @@
       fxLayoutAlign="center center"
       class="header"
     >
-      <h1>Bejelentkezés</h1>
+      <h1>Sign in</h1>
     </div>
     <div
       fxFill
@@ -20,16 +20,16 @@
         novalidate
       >
         <mat-form-field fxFill appearance="fill">
-          <mat-label>Az Ön e-mail címe</mat-label>
+          <mat-label>Your e-mail address</mat-label>
           <input matInput type="email" formControlName="email" required />
-          <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
+          <mat-hint>Valid format: name@domain.com</mat-hint>
           <mat-error
-            >Adja meg a regisztráció során használt E-mail címét!</mat-error
+            >Please provide the e-mail you choose during the registration!</mat-error
           >
         </mat-form-field>
   
         <mat-form-field fxFill appearance="fill">
-          <mat-label>Választott jelszava</mat-label>
+          <mat-label>Chosen password</mat-label>
           <mat-pass-toggle-visibility
             #toggle_first
             matSuffix
@@ -42,14 +42,14 @@
             formControlName="password"
             required
           />
-          <mat-error>Jelszó kitöltése kötelező!</mat-error>
+          <mat-error>Choosing a password is mandatory!</mat-error>
         </mat-form-field>
   
         <div
         style="padding-top: 10px; width: 50%" class="button"
         >
           <button fxFill type="submit" mat-raised-button color="accent">
-            Bejelentkezés
+            Sign in
           </button>
         </div>
       </form>

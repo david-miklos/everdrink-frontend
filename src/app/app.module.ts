@@ -21,10 +21,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './header/menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { FrontpageComponent } from './frontpage/frontpage.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { ContactComponent } from './contact/contact.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -34,7 +31,6 @@ import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './products/product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
-import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ROOT_REDUCERS } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -46,7 +42,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FileComponent } from './file/file.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { UserComponent } from './admin/users/user/user.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { AddAddressComponent } from './add-address/add-address.component';
@@ -59,7 +54,7 @@ import { OrdersComponent } from './admin/checkouts/checkout/orders/orders.compon
 import { OrderComponent } from './admin/checkouts/checkout/orders/order/order.component';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { RolesGuard } from '@core/guards/roles.guard';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -75,15 +70,12 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent,
     AddressComponent,
     FrontpageComponent,
     CategoriesComponent,
     CategoryComponent,
-    ContactComponent,
     SignupComponent,
     SigninComponent,
-    ContactComponent,
     UsersComponent,
     ProductsComponent,
     ProductComponent,
@@ -92,16 +84,13 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     CheckoutComponent,
     OrdersInCartComponent,
     OrderInCartComponent,
-    CartDetailComponent,
     FileComponent,
     ProductDetailComponent,
-    AdminHeaderComponent,
     UserComponent,
     StepperComponent,
     AddAddressComponent,
     OrdersComponent,
     OrderComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

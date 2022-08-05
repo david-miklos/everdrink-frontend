@@ -15,7 +15,7 @@
       fxLayoutAlign="center center"
       class="header"
     >
-      <h1>Regisztráció</h1>
+      <h1>Registration</h1>
     </div>
     <div fxFill class="form">
       <form
@@ -26,14 +26,14 @@
         novalidate
       >
         <mat-form-field fxFill appearance="fill">
-          <mat-label>E-mail cím</mat-label>
+          <mat-label>E-mail address</mat-label>
           <input matInput type="email" formControlName="email" required />
-          <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint>
-          <mat-error>Adjon meg egy érvényes E-mail címet!</mat-error>
+          <mat-hint>Valid format: name@domain.com</mat-hint>
+          <mat-error>Please provide a valid e-mail address!</mat-error>
         </mat-form-field>
 
         <mat-form-field fxFill appearance="fill">
-          <mat-label>Választott jelszava</mat-label>
+          <mat-label>Chosen password</mat-label>
           <mat-pass-toggle-visibility
             #toggle_first
             matSuffix
@@ -47,12 +47,12 @@
             required
           />
           <mat-error
-            >Feltételeknek megfelelő jelszó megadása kötelező!</mat-error
+            >Choosing a password which satisfies the criteria is mandatory!</mat-error
           >
         </mat-form-field>
 
         <mat-form-field fxFill appearance="fill">
-          <mat-label>Jelszó ismétlése</mat-label>
+          <mat-label>Re-enter password</mat-label>
           <mat-pass-toggle-visibility
             #toggle_second
             matSuffix
@@ -64,11 +64,11 @@
             formControlName="passwordConfirm"
             required
           />
-          <mat-error>Megadott jelszavak nem azonosak!</mat-error>
+          <mat-error>Given passwords are not matching!</mat-error>
         </mat-form-field>
 
         <div *ngIf="password.value.length > 0">
-          <mat-label>Jelszó erőssége:</mat-label>
+          <mat-label>Password secutity:</mat-label>
           <mat-password-strength
             #passwordStrength
             [password]="password.value"
@@ -87,7 +87,7 @@
 
         <div style="padding-top: 10px; width: 50%" class="button">
           <button fxFill type="submit" mat-raised-button color="accent">
-            Regisztrálok
+            Register
           </button>
         </div>
       </form>

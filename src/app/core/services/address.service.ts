@@ -34,10 +34,10 @@ export class AddressService {
     );
     this.http.post<Address>(`${baseUrl}/address/create`, address, { headers: header }).subscribe(
       (data) => {
-        this.ns.show('Sikeresen rögzítettük szállítási adatait!');
+        this.ns.show('The delivery options were stored successfully!');
       },
       (error) => {
-        this.ns.show('HIBA! Nem sikerült rögzíteni szállítási adatait!');
+        this.ns.show("ERROR! Couldn't store delivery options!");
         console.error(error);
       }
     );
@@ -49,16 +49,16 @@ export class AddressService {
       `Bearer ${this.token}`
     );
     this.http
-    .get<AddressResponse[]>(`${baseUrl}/address/${this.userId}/user`, { headers: header })
-    .subscribe(
-      (data) => {
-        this.userAddresses = data;
-      },
-      (error) => {
-        this.ns.show('HIBA! Cim lekerese sikertelen!');
-        console.error(error);
-      }
-    );
+      .get<AddressResponse[]>(`${baseUrl}/address/${this.userId}/user`, { headers: header })
+      .subscribe(
+        (data) => {
+          this.userAddresses = data;
+        },
+        (error) => {
+          this.ns.show("ERROR! Couldn't get delivery address!");
+          console.error(error);
+        }
+      );
   }
 
   getAdminAddresses(): void {
@@ -67,15 +67,15 @@ export class AddressService {
       `Bearer ${this.token}`
     );
     this.http
-    .get<AddressResponse[]>(`${baseUrl}/address/admin`, { headers: header })
-    .subscribe(
-      (data) => {
-        this.adminAddresses = data;
-      },
-      (error) => {
-        this.ns.show('HIBA! Cim lekerese sikertelen!');
-        console.error(error);
-      }
-    );
+      .get<AddressResponse[]>(`${baseUrl}/address/admin`, { headers: header })
+      .subscribe(
+        (data) => {
+          this.adminAddresses = data;
+        },
+        (error) => {
+          this.ns.show("ERROR! Couldn't get delivery address!");
+          console.error(error);
+        }
+      );
   }
 }

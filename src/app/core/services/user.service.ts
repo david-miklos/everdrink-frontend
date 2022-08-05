@@ -47,7 +47,7 @@ export class UserService {
         (error) => {
           this.authService.signout();
           this.router.navigate(['']);
-          this.ns.show('Jelentkezzen újra be, lejárt az érvényesség!');
+          this.ns.show('Login again, your session exipred!');
         }
       );
   }
@@ -61,7 +61,7 @@ export class UserService {
       .put<User>(`${baseUrl}/user/${id}/approve`, null, { headers: header })
       .subscribe(
         (data) => {
-          this.ns.show('Felhasználó jóváhagyva!');
+          this.ns.show('User approved!');
           console.log(data);
           this.store.dispatch(UserActions.approveUser({ user: data }));
         },

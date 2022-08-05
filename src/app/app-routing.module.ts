@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
-import { FrontpageComponent } from './frontpage/frontpage.component';
 import { ProductsComponent } from './products/products.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -15,6 +14,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { CheckoutsComponent } from './admin/checkouts/checkouts.component';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { RolesGuard } from '@core/guards/roles.guard';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent },
@@ -23,10 +23,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthGuard, RolesGuard],
-    data: {
-      expectedRole: 'PARTNER',
-    },
+    // canActivate: [AuthGuard, RolesGuard],
+    // data: {
+    //   expectedRole: 'PARTNER',
+    // },
   },
   { path: 'address', component: AddressComponent },
   { path: 'add-address', component: AddAddressComponent },
@@ -53,10 +53,10 @@ const routes: Routes = [
   {
     path: 'product-detail/:id',
     component: ProductDetailComponent,
-    canActivate: [AuthGuard, RolesGuard],
-    data: {
-      expectedRole: 'PARTNER',
-    },
+    // canActivate: [AuthGuard, RolesGuard],
+    // data: {
+    //   expectedRole: 'PARTNER',
+    // },
   },
 ];
 

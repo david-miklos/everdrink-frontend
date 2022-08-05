@@ -4,17 +4,17 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
         <div>
-          <span style="font-weight: 500; font-size: medium">Azonosító: </span>
+          <span style="font-weight: 500; font-size: medium">ID: </span>
           <span>{{ user.id }}</span>
         </div>
         <div fxFlexOffset="3">
-          <span style="font-weight: 500; font-size: medium">E-mail cím: </span>
+          <span style="font-weight: 500; font-size: medium">E-mail: </span>
           <span>{{ user.email }}</span>
         </div>
       </mat-panel-title>
       <mat-panel-description>
         <div>
-          <span>Vendég</span>
+          <span>Guest</span>
         </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
@@ -32,7 +32,7 @@
           color="primary"
           (click)="approve()"
         >
-          Jóváhagyás
+          Approve
           <mat-icon>check</mat-icon>
         </button>
       </div>

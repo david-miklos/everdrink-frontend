@@ -2,8 +2,8 @@
   <mat-card fxLayout="column" fxLayoutAlign=" none">
     <div>
       <mat-card-header>
-        <mat-card-title>Rendelés</mat-card-title>
-        <mat-card-subtitle>Rendelés adatai</mat-card-subtitle>
+        <mat-card-title>Order</mat-card-title>
+        <mat-card-subtitle>Order detail</mat-card-subtitle>
       </mat-card-header>
     </div>
     <div>
@@ -29,18 +29,18 @@
           >
             <div fxLayout="column" fxLayoutAlign="space-evenly start">
               <div>
-                <strong>Típus: </strong> <span> {{ order.product.type }}</span>
+                <strong>Type: </strong> <span> {{ order.product.type }}</span>
               </div>
               <div>
-                <strong>Alkohol tartalom: </strong>
+                <strong>Alcohol content: </strong>
                 <span>{{ order.product.alcohol_content }}</span>
               </div>
               <div>
-                <strong>Kiszerelés: </strong>
+                <strong>Packaging: </strong>
                 <span>{{ order.product.packaging }}</span>
               </div>
               <div>
-                <strong>Méret: </strong>
+                <strong>Volume: </strong>
                 <span> {{ order.product.volume }}</span>
               </div>
             </div>
@@ -48,27 +48,27 @@
           <div fxLayout="row" fxLayoutAlign="center center" class="details">
             <div fxLayout="column" fxLayoutAlign="space-evenly start">
               <div>
-                <strong> Nettó ár:</strong>
+                <strong>Net price:</strong>
                 <span>
                   {{ order.product.net_price * order.quantity | number }}
                   Ft</span
                 >
               </div>
               <div>
-                <strong> Áfa: </strong>
+                <strong> VAT: </strong>
                 <span
                   >{{ order.product.vat * order.quantity | number }} Ft</span
                 >
               </div>
               <div>
-                <strong> Bruttó ár:</strong>
+                <strong>Gross price:</strong>
                 <span>
                   {{ order.product.gross_price * order.quantity | number }}
                   Ft</span
                 >
               </div>
               <div>
-                <strong> Göngyöleg nettó ár:</strong>
+                <strong>Wrappage net price:</strong>
                 <span>
                   {{
                     order.product.wrappage_net_price * order.quantity | number
@@ -77,7 +77,7 @@
                 >
               </div>
               <div>
-                <strong> Göngyöleg bruttó ár:</strong>
+                <strong>Wrappage gross price:</strong>
                 <span>
                   {{
                     order.product.wrappage_gross_price * order.quantity | number
@@ -86,7 +86,7 @@
                 >
               </div>
               <div>
-                <strong> Összesen:</strong>
+                <strong>Total:</strong>
                 <span>
                   {{
                     (order.product.gross_price +
@@ -105,7 +105,7 @@
             class="quantity"
           >
             <div fxLayout="row" fxLayoutAlign="center center">
-              <span style="font-size: large;">Darabszám: </span>
+              <span style="font-size: large;">Quantity: </span>
               <span
                 style="font-size: 40px; padding-left: 10px"
                 >{{ order.quantity }}</span

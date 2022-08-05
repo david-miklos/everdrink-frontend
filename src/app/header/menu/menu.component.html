@@ -13,7 +13,7 @@
       (click)="signout()"
       routerLinkActive="router-link-active"
     >
-      Kijelentkezés
+      Sign out
     </button>
   </div>
   <ng-template #elseBlock>
@@ -22,7 +22,7 @@
       [routerLink]="['/signup']"
       routerLinkActive="router-link-active"
     >
-      Regisztráció
+      Registration
     </a>
     <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
       <a
@@ -30,14 +30,14 @@
         [routerLink]="['/add-address']"
         routerLinkActive="router-link-active"
       >
-        Új cím hozzáadása
+        Add new address
       </a>
       <button
         mat-menu-item
         (click)="signout()"
         routerLinkActive="router-link-active"
       >
-        Kijelentkezés
+        Sign out
       </button>
     </div>
     <ng-template #elseBlock>
@@ -46,7 +46,7 @@
         [routerLink]="['/signin']"
         routerLinkActive="router-link-active"
       >
-        Bejelentkezés
+        Sign in
       </a>
     </ng-template>
   </ng-template>
