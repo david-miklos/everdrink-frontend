@@ -1,51 +1,27 @@
-<button
-  mat-icon-button
-  class="account-icon"
-  aria-label="Example icon-button with share icon"
-  [matMenuTriggerFor]="account"
->
+<button mat-icon-button class="account-icon" aria-label="Example icon-button with share icon"
+  [matMenuTriggerFor]="account">
   <mat-icon>account_circle</mat-icon>
 </button>
 <mat-menu #account="matMenu">
   <div *ngIf="role === 'ADMIN'; else elseBlock">
-    <button
-      mat-menu-item
-      (click)="signout()"
-      routerLinkActive="router-link-active"
-    >
+    <button mat-menu-item (click)="signout()" routerLinkActive="router-link-active">
       Sign out
     </button>
   </div>
   <ng-template #elseBlock>
-    <a
-      mat-menu-item
-      [routerLink]="['/signup']"
-      routerLinkActive="router-link-active"
-    >
+    <a mat-menu-item [routerLink]="['/signup']" routerLinkActive="router-link-active">
       Registration
     </a>
     <div *ngIf="authService.isLoggedIn$ | async; else elseBlock">
-      <a
-        mat-menu-item
-        [routerLink]="['/add-address']"
-        routerLinkActive="router-link-active"
-      >
+      <a mat-menu-item [routerLink]="['/add-address']" routerLinkActive="router-link-active">
         Add new address
       </a>
-      <button
-        mat-menu-item
-        (click)="signout()"
-        routerLinkActive="router-link-active"
-      >
+      <button mat-menu-item (click)="signout()" routerLinkActive="router-link-active">
         Sign out
       </button>
     </div>
     <ng-template #elseBlock>
-      <a
-        mat-menu-item
-        [routerLink]="['/signin']"
-        routerLinkActive="router-link-active"
-      >
+      <a mat-menu-item [routerLink]="['/signin']" routerLinkActive="router-link-active">
         Sign in
       </a>
     </ng-template>
