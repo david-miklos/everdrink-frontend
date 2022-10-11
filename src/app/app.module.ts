@@ -55,6 +55,7 @@ import { OrderComponent } from './admin/checkouts/checkout/orders/order/order.co
 import { AuthGuard } from '@core/guards/auth.guard';
 import { RolesGuard } from '@core/guards/roles.guard';
 import { FrontpageComponent } from './frontpage/frontpage.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -91,6 +92,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AddAddressComponent,
     OrdersComponent,
     OrderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

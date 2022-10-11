@@ -99,7 +99,7 @@ export class CheckoutService {
           this.ns.show('Order confirm successful!');
         },
         (error) => {
-          this.ns.show('ERROR! Order confirm unsuccessful!');
+          this.ns.show('ERROR! You need to be authorized by the admin!');
           console.error(error);
         }
       );

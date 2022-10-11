@@ -1,108 +1,63 @@
 <div *ngIf="role === 'ADMIN'; else elseBlock">
-    <mat-toolbar color="primary">
-      <div class="home">
-        <a
-          [routerLink]="['']"
-          routerLinkActive="router-link-active"
-          fxFlexOffset="10"
-          fxLayout="column"
-          fxLayoutAlign=" none"
-          style="text-decoration: none; color: white"
-        >
-          <span style="font-size: larger">EVER</span>
-          <span style="margin-top: -10px">DRINK</span>
-        </a>
-      </div>
+  <mat-toolbar color="primary">
 
-      <div
-        fxLayout="row"
-        fxLayoutAlign="center center"
-        fxFlexOffset="5"
-        class="users"
-        style="width: 120px; height: 60px"
-      >
-        <a
-          fxFill
-          [routerLink]="['users']"
-          routerLinkActive="router-link-active"
-          style="border: none; text-decoration: none; color: white"
-        >
-          <span fxLayout="row" fxLayoutAlign="center center" fxFill
-            >Users</span
-          >
-        </a>
-      </div>
-
-      <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxFlexOffset="5"
-      class="checkouts"
-      style="width: 120px; height: 60px"
-    >
-      <a
-        fxFill
-        [routerLink]="['checkouts']"
-        routerLinkActive="router-link-active"
-        style="border: none; text-decoration: none; color: white"
-      >
-        <span fxLayout="row" fxLayoutAlign="center center" fxFill
-          >Orders</span
-        >
+    <div class="nav-brand-group nav-element">
+      <a [routerLink]="['']" routerLinkActive="router-link-active">
+        <div class="brand">
+          <div>EVER</div>
+          <div>DRINK</div>
+        </div>
       </a>
     </div>
-      <span class="example-spacer"></span>
+
+    <div class="nav-users nav-element">
+      <a [routerLink]="['users']" routerLinkActive="router-link-active">
+        <div>Users</div>
+      </a>
+    </div>
+
+    <div class="nav-orders nav-element">
+      <a [routerLink]="['checkouts']" routerLinkActive="router-link-active">
+        <div>Orders</div>
+      </a>
+    </div>
+
+    <div class="nav-setting-group">
       <app-menu></app-menu>
-    </mat-toolbar>
+    </div>
+
+  </mat-toolbar>
 </div>
 <ng-template #elseBlock>
   <mat-toolbar color="primary">
-    <div class="home">
-      <a
-        [routerLink]="['']"
-        routerLinkActive="router-link-active"
-        fxFlexOffset="10"
-        fxLayout="column"
-        fxLayoutAlign=" none"
-        style="text-decoration: none; color: white"
-      >
-        <span style="font-size: larger">EVER</span>
-        <span style="margin-top: -10px">DRINK</span>
+
+    <div class="nav-brand-group nav-element">
+      <a [routerLink]="['']" routerLinkActive="router-link-active">
+        <div class="brand">
+          <div>EVER</div>
+          <div>DRINK</div>
+        </div>
       </a>
     </div>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxFlexOffset="5"
-      class="products"
-      style="width: 120px; height: 60px"
-    >
-      <a
-        fxFill
-        [routerLink]="['categories']"
-        routerLinkActive="router-link-active"
-        style="border: none; text-decoration: none; color: white"
-      >
-        <span fxLayout="row" fxLayoutAlign="center center" fxFill
-          >Products</span
-        >
+
+    <div class="nav-products nav-element">
+      <a [routerLink]="['categories']" routerLinkActive="router-link-active">
+        Products
       </a>
     </div>
-    <span class="example-spacer"></span>
-    <app-menu></app-menu>
-    <a
-      mat-icon-button
-      [routerLink]="['cart']"
-      routerLinkActive="router-link-active"
-      class="cart-icon"
-      aria-label="Icon button with a cart one icon"
-    >
-      <mat-icon
-        [matBadge]="content"
-        [matBadgeHidden]="hidden"
-        matBadgeColor="accent"
-        >shopping_cart</mat-icon
-      >
-    </a>
+
+    <div class="nav-setting-group">
+      <div class="nav-setting-group-menu">
+        <app-menu></app-menu>
+      </div>
+      <div class="nav-setting-group-cart">
+        <a mat-icon-button [routerLink]="['cart']" routerLinkActive="router-link-active" class="cart-icon"
+          aria-label="Icon button with a cart one icon">
+          <mat-icon [matBadge]="content" [matBadgeHidden]="hidden" matBadgeColor="accent">shopping_cart</mat-icon>
+        </a>
+      </div>
+    </div>
+
   </mat-toolbar>
+
 </ng-template>
