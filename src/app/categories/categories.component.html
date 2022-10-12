@@ -1,9 +1,5 @@
-<div class="content">
-  <div
-    xLayout="column"
-    fxLayoutAlign="space-around center"
-    *ngFor="let category of categoryService.categories"
-  >
+<div class="categories">
+  <div *ngFor="let category of categoryService.categories">
     <app-category [category]="category"></app-category>
   </div>
 </div>

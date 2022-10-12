@@ -1,47 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="space-evenly center" class="card">
-  <mat-card style="background-color: #efefef; width: 50%" class="category-card">
-    <mat-card-header fxLayout="column" fxLayoutAlign="space-evenly center">
-      <mat-card-title>{{ category.display_name }}</mat-card-title>
-    </mat-card-header>
-    <div
-      style="margin-top: 5px"
-      class="img"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-    >
-      <img
-        mat-card-image
-        src="/assets/mockups/beer.mockup.jpg"
-        alt="Photo of a beer bottle"
-      />
-    </div>
-
-    <mat-card-content
-      style="margin-left: 40px; margin-right: 40px"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-    >
-      <p>
-        {{ category.description }}
-      </p>
-    </mat-card-content>
-
-    <mat-card-actions
-      style="margin-top: -5px"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly end"
-    >
-      <div style="padding: 10px">
-        <a
-          mat-raised-button
-          color="primary"
-          [routerLink]="['/products', category.id]"
-          routerLinkActive="router-link-active"
-        >
-          <span>More</span>
-          <mat-icon>arrow_forward_ios</mat-icon>
-        </a>
-      </div>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card class="category-card">
+  <mat-card-header class="category-card-header">
+    <mat-card-title>{{ category.display_name }}</mat-card-title>
+  </mat-card-header>
+  <img class="category-card-image" src="/assets/mockups/beer.mockup.jpg" alt="Photo of a beer bottle" />
+  <mat-card-content class="category-card-content">
+    {{ category.description }}
+  </mat-card-content>
+  <div class="category-card-actions">
+    <a mat-raised-button color="primary" [routerLink]="['/products', category.id]"
+      routerLinkActive="router-link-active">
+      More
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </a>
+  </div>
+</mat-card>

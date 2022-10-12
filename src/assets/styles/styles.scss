@@ -46,7 +46,7 @@ a {
   justify-content: center;
   flex-direction: row;
   padding: 250px 300px;
-} 
+}
 
 .footer {
   background: #263238;
@@ -65,4 +65,38 @@ a {
   flex-direction: row;
   justify-content: center;
   justify-items: center;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.category-card {
+  margin: 50px 100px;
+}
+
+.category-card-header {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-card-image {
+  height: 300px;
+  margin: 20px auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card-content {
+  padding: 30px 20px 20px 20px;
+}
+
+.category-card-actions {
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
