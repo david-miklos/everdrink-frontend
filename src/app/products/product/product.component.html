@@ -1,31 +1,14 @@
-<div class="card">
-  <mat-card style="background-color: #efefef;" class="product-card">
-    <img 
-      mat-card-image
-      src="/assets/mockups/beer.mockup.jpg"
-      alt="Photo of a beer bottle"
-    />
-    <mat-card-content>
-      <div fxLayout="column" fxLayoutAlign="center center" class="content">
-        <h3>{{ product.brand }}</h3>
-        <h4>{{ product.name }}</h4>
-        <b>{{ product.gross_price | number }} Ft</b>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <div style="padding: 5px; padding-right: 10px;" class="cart-button-container">
-        <div fxLayout="row" fxLayoutAlign="end center" class="button">
-          <a
-            mat-mini-fab
-            color="accent"
-            aria-label="Icon button with a cart one icon"
-            [routerLink]="['/product-detail', product.id]"
-            routerLinkActive="router-link-active"
-          >
-            <mat-icon>more_vert</mat-icon>
-        </a>
-        </div>
-      </div>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card class="product-card">
+  <img class="product-card-image" src="/assets/mockups/beer.mockup.jpg" alt="Photo of a beer bottle" />
+  <div class="product-card-content">
+    <h3>{{ product.brand }}</h3>
+    <h4>{{ product.name }}</h4>
+    <b>{{ product.gross_price | number }} Ft</b>
+  </div>
+  <div class="product-card-actions">
+    <a mat-mini-fab color="accent" aria-label="Icon button with a cart one icon"
+      [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+      <mat-icon>more_vert</mat-icon>
+    </a>
+  </div>
+</mat-card>

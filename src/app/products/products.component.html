@@ -1,14 +1,14 @@
 <div *ngIf="productService.products">
   <div *ngIf="productService.products.length > 0; else elseBlock">
-    <div class="content">
-      <div fxLayout="row wrap" fxLayoutGap="10px grid">
-        <div fxFlex="25%" *ngFor="let product of productService.products">
-          <app-product [product]="product"></app-product>
-        </div>
+    <div class="products">
+      <div *ngFor="let product of productService.products">
+        <app-product [product]="product"></app-product>
       </div>
     </div>
   </div>
   <ng-template #elseBlock>
-    <div *ngIf="errorMsg"><app-not-found [msg]="errorMsg"></app-not-found></div>
+    <div *ngIf="errorMsg">
+      <app-not-found [msg]="errorMsg"></app-not-found>
+    </div>
   </ng-template>
 </div>
