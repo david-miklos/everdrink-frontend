@@ -1,58 +1,30 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="content" style="padding-top: 100px;">
-  <mat-card fxLayout="column" fxLayoutAlign="center center" style="background-color: #efefef; width: 30%">
-    <div
-      style="width: 30%"
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      class="header"
-    >
+<div class="sign-up">
+  <mat-card class="sign-up-card">
+    <div class="sign-up-title">
       <h1>Sign in</h1>
     </div>
-    <div
-      fxFill
-      class="form"
-    >
-      <form
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        [formGroup]="signinForm"
-        (ngSubmit)="signin(signinForm)"
-        novalidate
-      >
-        <mat-form-field fxFill appearance="fill">
-          <mat-label>Your e-mail address</mat-label>
-          <input matInput type="email" formControlName="email" required />
-          <mat-hint>Valid format: name@domain.com</mat-hint>
-          <mat-error
-            >Please provide the e-mail you choose during the registration!</mat-error
-          >
-        </mat-form-field>
-  
-        <mat-form-field fxFill appearance="fill">
-          <mat-label>Chosen password</mat-label>
-          <mat-pass-toggle-visibility
-            #toggle_first
-            matSuffix
-          ></mat-pass-toggle-visibility>
-          <input
-            matInput
-            #password
-            type="password"
-            [type]="toggle_first.type"
-            formControlName="password"
-            required
-          />
-          <mat-error>Choosing a password is mandatory!</mat-error>
-        </mat-form-field>
-  
-        <div
-        style="padding-top: 10px; width: 50%" class="button"
-        >
-          <button fxFill type="submit" mat-raised-button color="accent">
+    <div class="sign-up-form">
+      <form [formGroup]="signinForm" (ngSubmit)="signin(signinForm)" novalidate>
+        <div class="form-fields">
+          <mat-form-field class="field">
+            <mat-label>Your e-mail address</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-hint>Valid format: name@domain.com</mat-hint>
+            <mat-error>Please provide the e-mail you choose during the registration!</mat-error>
+          </mat-form-field>
+          <mat-form-field class="field">
+            <mat-label>Chosen password</mat-label>
+            <mat-pass-toggle-visibility #toggle_first matSuffix></mat-pass-toggle-visibility>
+            <input matInput #password type="password" [type]="toggle_first.type" formControlName="password" required />
+            <mat-error>Choosing a password is mandatory!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="sign-up-form-button">
+          <button class="sign-up-button" type="submit" mat-raised-button color="accent">
             Sign in
           </button>
         </div>
       </form>
     </div>
-  </mat-card>  
+  </mat-card>
 </div>

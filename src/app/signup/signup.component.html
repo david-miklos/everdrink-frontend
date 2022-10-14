@@ -1,92 +1,43 @@
-<div
-  fxLayout="row"
-  fxLayoutAlign="center center"
-  class="content"
-  style="padding-top: 100px"
->
-  <mat-card
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    style="background-color: #efefef; width: 30%"
-  >
-    <div
-      style="width: 30%"
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      class="header"
-    >
+<div class="sign-up">
+  <mat-card class="sign-up-card">
+    <div class="sign-up-title">
       <h1>Registration</h1>
     </div>
-    <div fxFill class="form">
-      <form
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        [formGroup]="signupForm"
-        (ngSubmit)="signup(signupForm)"
-        novalidate
-      >
-        <mat-form-field fxFill appearance="fill">
-          <mat-label>E-mail address</mat-label>
-          <input matInput type="email" formControlName="email" required />
-          <mat-hint>Valid format: name@domain.com</mat-hint>
-          <mat-error>Please provide a valid e-mail address!</mat-error>
-        </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
-          <mat-label>Chosen password</mat-label>
-          <mat-pass-toggle-visibility
-            #toggle_first
-            matSuffix
-          ></mat-pass-toggle-visibility>
-          <input
-            matInput
-            #password
-            type="password"
-            [type]="toggle_first.type"
-            formControlName="password"
-            required
-          />
-          <mat-error
-            >Choosing a password which satisfies the criteria is mandatory!</mat-error
-          >
-        </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
-          <mat-label>Re-enter password</mat-label>
-          <mat-pass-toggle-visibility
-            #toggle_second
-            matSuffix
-          ></mat-pass-toggle-visibility>
-          <input
-            matInput
-            type="password"
-            [type]="toggle_second.type"
-            formControlName="passwordConfirm"
-            required
-          />
-          <mat-error>Given passwords are not matching!</mat-error>
-        </mat-form-field>
-
-        <div *ngIf="password.value.length > 0">
-          <mat-label>Password secutity:</mat-label>
-          <mat-password-strength
-            #passwordStrength
-            [password]="password.value"
-            [enableSpecialCharRule]="false"
-          >
-          </mat-password-strength>
-          <mat-password-strength-info
-            [passwordComponent]="passwordStrength"
-            lowerCaseCriteriaMsg="legalább egy kisbetűt tartalmaznia kell"
-            upperCaseCriteriaMsg="legalább egy nagybetűt tartalmaznia kell"
-            digitsCriteriaMsg="legalább egy számot tartalmaznia kell"
-            minCharsCriteriaMsg="legalább 8 karakter hosszú legyen"
-          >
-          </mat-password-strength-info>
+    <div class="form">
+      <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)" novalidate>
+        <div class="form-fields">
+          <mat-form-field class="field">
+            <mat-label>E-mail address</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-hint>Valid format: name@domain.com</mat-hint>
+            <mat-error>Please provide a valid e-mail address!</mat-error>
+          </mat-form-field>
+          <mat-form-field class="field">
+            <mat-label>Chosen password</mat-label>
+            <mat-pass-toggle-visibility #toggle_first matSuffix></mat-pass-toggle-visibility>
+            <input matInput #password type="password" [type]="toggle_first.type" formControlName="password" required />
+            <mat-error>Choosing a password which satisfies the criteria is mandatory!</mat-error>
+          </mat-form-field>
+          <mat-form-field class="field">
+            <mat-label>Re-enter password</mat-label>
+            <mat-pass-toggle-visibility #toggle_second matSuffix></mat-pass-toggle-visibility>
+            <input matInput type="password" [type]="toggle_second.type" formControlName="passwordConfirm" required />
+            <mat-error>Given passwords are not matching!</mat-error>
+          </mat-form-field>
+          <div *ngIf="password.value.length > 0">
+            <mat-label>Password secutity:</mat-label>
+            <mat-password-strength #passwordStrength [password]="password.value" [enableSpecialCharRule]="false">
+            </mat-password-strength>
+            <mat-password-strength-info [passwordComponent]="passwordStrength" lowerCaseCriteriaMsg="
+              must contain at least one lowercase letter" upperCaseCriteriaMsg="
+              must contain at least one uppercase letter" digitsCriteriaMsg="
+              must contain at least one number" minCharsCriteriaMsg="must be at least 8 characters long">
+            </mat-password-strength-info>
+          </div>
         </div>
 
-        <div style="padding-top: 10px; width: 50%" class="button">
-          <button fxFill type="submit" mat-raised-button color="accent">
+        <div class="sign-up-form-button">
+          <button class="sign-up-button" type="submit" mat-raised-button color="accent">
             Register
           </button>
         </div>

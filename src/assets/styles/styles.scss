@@ -237,3 +237,42 @@ td:last-child {
 .add-to-cart-button {
   width: 25%;
 }
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up {
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sign-up-card {
+  width: 50%;
+}
+
+.sign-up-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-up-form-button {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  padding-bottom: 10px;
+}
+
+.sign-up-button {
+  width: 25%;
+}
