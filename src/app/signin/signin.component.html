@@ -1,30 +1,28 @@
-<div class="sign-up">
-  <mat-card class="sign-up-card">
-    <div class="sign-up-title">
+<div class="form">
+  <mat-card class="form-card">
+    <div class="form-title">
       <h1>Sign in</h1>
     </div>
-    <div class="sign-up-form">
-      <form [formGroup]="signinForm" (ngSubmit)="signin(signinForm)" novalidate>
-        <div class="form-fields">
-          <mat-form-field class="field">
-            <mat-label>Your e-mail address</mat-label>
-            <input matInput type="email" formControlName="email" required />
-            <mat-hint>Valid format: name@domain.com</mat-hint>
-            <mat-error>Please provide the e-mail you choose during the registration!</mat-error>
-          </mat-form-field>
-          <mat-form-field class="field">
-            <mat-label>Chosen password</mat-label>
-            <mat-pass-toggle-visibility #toggle_first matSuffix></mat-pass-toggle-visibility>
-            <input matInput #password type="password" [type]="toggle_first.type" formControlName="password" required />
-            <mat-error>Choosing a password is mandatory!</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="sign-up-form-button">
-          <button class="sign-up-button" type="submit" mat-raised-button color="accent">
-            Sign in
-          </button>
-        </div>
-      </form>
-    </div>
+    <form [formGroup]="signinForm" (ngSubmit)="signin(signinForm)" novalidate>
+      <div class="form-fields">
+        <mat-form-field class="field">
+          <mat-label>Your e-mail address</mat-label>
+          <input matInput type="email" formControlName="email" required />
+          <mat-hint>Valid format: name@domain.com</mat-hint>
+          <mat-error>Please provide the e-mail you choose during the registration!</mat-error>
+        </mat-form-field>
+        <mat-form-field class="field">
+          <mat-label>Chosen password</mat-label>
+          <mat-pass-toggle-visibility #toggle_first matSuffix></mat-pass-toggle-visibility>
+          <input matInput #password type="password" [type]="toggle_first.type" formControlName="password" required />
+          <mat-error>Choosing a password is mandatory!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-form-button">
+        <button class="form-button" type="submit" mat-raised-button color="accent">
+          Sign in
+        </button>
+      </div>
+    </form>
   </mat-card>
 </div>

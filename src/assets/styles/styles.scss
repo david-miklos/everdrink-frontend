@@ -243,7 +243,7 @@ td:last-child {
   flex-direction: column;
 }
 
-.sign-up {
+.form {
   margin: 100px auto;
   display: flex;
   justify-content: center;
@@ -251,17 +251,17 @@ td:last-child {
   flex-direction: column;
 }
 
-.sign-up-card {
+.form-card {
   width: 50%;
 }
 
-.sign-up-title {
+.form-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.sign-up-form-button {
+.form-form-button {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -273,6 +273,6 @@ td:last-child {
   padding-bottom: 10px;
 }
 
-.sign-up-button {
+.form-button {
   width: 25%;
 }

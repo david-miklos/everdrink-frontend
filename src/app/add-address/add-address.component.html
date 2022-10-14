@@ -1,92 +1,61 @@
-<div
-  fxLayout="row"
-  fxLayoutAlign="center center"
-  class="content"
-  style="padding-top: 30px"
->
-  <mat-card
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    style="background-color: #efefef; width: 50%"
-  >
-    <div
-      style="width: 30%"
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      class="header"
-    >
+<div class="form">
+  <mat-card class="form-card">
+    <div class="form-title">
       <h1>Add new address</h1>
     </div>
-    <div fxFill class="form">
-      <form
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        [formGroup]="addressForm"
-        (ngSubmit)="submitAddress(addressForm)"
-        novalidate
-      >
-        <mat-form-field fxFill appearance="fill">
+    <form [formGroup]="addressForm" (ngSubmit)="submitAddress(addressForm)" novalidate>
+      <div class="form-fields">
+        <mat-form-field class="field">
           <mat-label>Country</mat-label>
           <mat-select formControlName="country">
             <mat-option required value="Hungary">Hungary</mat-option>
           </mat-select>
           <mat-error>Please choose a country!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <mat-label>Region</mat-label>
           <input matInput type="text" formControlName="region" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid region!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <mat-label>City</mat-label>
           <input matInput type="text" formControlName="city" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid city!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <mat-label>ZIP Code</mat-label>
           <input matInput type="text" formControlName="zip" required />
           <mat-hint>Valid format: 1234</mat-hint>
           <mat-error>Please provide a valid ZIP Code!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <mat-label>Street</mat-label>
           <input matInput type="text" formControlName="street" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid street!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <mat-label>Street number</mat-label>
-          <input
-            matInput
-            type="text"
-            formControlName="street_number"
-            required
-          />
+          <input matInput type="text" formControlName="street_number" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid street number!</mat-error>
         </mat-form-field>
-
-        <mat-form-field fxFill appearance="fill">
+        <mat-form-field class="field">
           <span matPrefix>+36</span>
           <mat-label>Phone number</mat-label>
           <input matInput type="text" formControlName="phone" required />
           <mat-hint>Valid format: 123456789</mat-hint>
           <mat-error>Please provide a valid phone number!</mat-error>
         </mat-form-field>
+      </div>
 
-        <div style="padding-top: 10px; width: 50%" class="button">
-          <button fxFill type="submit" mat-raised-button color="accent">
-            Submit address
-          </button>
-        </div>
-      </form>
-    </div>
+      <div class="form-form-button">
+        <button class="form-button" type="submit" mat-raised-button color="accent">
+          Submit address
+        </button>
+      </div>
+    </form>
   </mat-card>
 </div>
