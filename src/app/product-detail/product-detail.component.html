@@ -1,125 +1,54 @@
-<div
-  *ngIf="productService.product"
-  fxLayout="row"
-  fxLayoutAlign="center center"
-  class="card"
->
-  <mat-card style="background-color: #efefef; width: 50%" class="product-card">
-    <div fxLayout="row" class="content">
-      <div style="width: 50%" class="left">
-        <div fxLayout="row" fxLayoutAlign="start center" class="content">
-          <h2 fxFlexOffset="5">{{ this.productService.product.brand }}</h2>
-          <h2 fxFlexOffset="2">{{ this.productService.product.name }}</h2>
+<div *ngIf="productService.product">
+  <div class="product-detail">
+    <mat-card>
+      <div class="product-detail-card">
+        <div class="product-detail-title">
+          <h2>{{ this.productService.product.brand }}</h2>
+          <h2>{{ this.productService.product.name }}</h2>
         </div>
-
-        <div
-          style="padding-top: 20px"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
-          <img
-            mat-card-image
-            style="width: 100%"
-            src="/assets/mockups/beer.mockup.jpg"
-            alt="Photo of a beer bottle"
-          />
+        <img class="product-detail-image" src="/assets/mockups/beer.mockup.jpg" alt="Photo of a beer bottle" />
+        <div class="product-detail-summary">
+          <table class="summary-table">
+            <tbody>
+              <tr>
+                <td>Type:</td>
+                <td>{{ this.productService.product.type }}</td>
+              </tr>
+              <tr>
+                <td>Alcohol content:</td>
+                <td>{{ this.productService.product.alcohol_content }}</td>
+              </tr>
+              <tr>
+                <td>Packaging:</td>
+                <td>{{ this.productService.product.packaging }}</td>
+              </tr>
+              <tr>
+                <td>Volume:</td>
+                <td>{{ this.productService.product.volume }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div fxFlexOffset="10" fxLayout="column" style="width: 50%" class="right">
-        <mat-card-content fxLayout="column" fxFlexOffset="30">
-          <div fxLayout="column" fxLayoutAlign="space-evenly start">
-            <div style="padding: 5px;">
-              <strong style="font-size: larger;">
-                Type:
-              </strong>
-              <span style="font-size: large;">
-                {{ this.productService.product.type }}
-              </span>
-            </div>
-            <div style="padding: 5px;">
-              <strong style="font-size: larger;">
-                Alcohol content:
-              </strong>
-              <span style="font-size: large;">
-                {{ this.productService.product.alcohol_content }}
-              </span>
-            </div>
-            <div style="padding: 5px;">
-              <strong style="font-size: larger;">
-                Packaging: 
-              </strong>
-              <span style="font-size: large;">
-                {{ this.productService.product.packaging }}
-              </span>
-            </div>
-            <div style="padding: 5px;">
-              <strong style="font-size: larger;">
-                Volume:
-              </strong>
-              <span style="font-size: large;">
-                {{ this.productService.product.volume }}
-              </span>
-            </div>
-          </div>
-        </mat-card-content>
-      </div>
-    </div>
-    <div class="actions">
-      <mat-card-actions>
-        <div
-          style="padding-top: 5px"
-          fxLayout="row"
-          fxLayoutAlign="center"
-          class="quantity"
-        >
-          <div>
-            <button
-              style="font-size: 25px"
-              mat-mini-fab
-              color="primary"
-              [disabled]="quantity < 2"
-              (click)="decrement()"
-            >
-              -
-            </button>
-          </div>
-
-          <div fxLayout="row" fxLayoutAlign="center center">
-            <span
-              style="font-size: 40px; padding-left: 80px; padding-right: 80px"
-              >{{ quantity }}</span
-            >
-          </div>
-
-          <div>
-            <button
-              style="font-size: 25px"
-              mat-mini-fab
-              color="primary"
-              (click)="increment()"
-            >
-              +
-            </button>
-          </div>
-        </div>
-
-        <div
-          style="padding-top: 50px"
-          fxLayout="row"
-          fxLayoutAlign="center center"
-          class="toCart"
-        >
-          <button
-            mat-raised-button
-            color="accent"
-            aria-label="Icon button with a cart one icon"
-            (click)="addToCart()"
-          >
-            <span style="padding-right: 5px;">Add to Cart</span>
-            <mat-icon>add_shopping_cart</mat-icon>
+        <div class="product-detail-quantity-setter">
+          <button class="product-detail-decrement-button" mat-mini-fab color="primary" [disabled]="quantity < 2"
+            (click)="decrement()">
+            -
+          </button>
+          <div class="product-detail-quantity">{{ quantity }}</div>
+          <button class="product-detail-increment-button" mat-mini-fab color="primary" (click)="increment()">
+            +
           </button>
         </div>
-      </mat-card-actions>
-    </div>
-  </mat-card>
+        <div class="product-detail-add-to-cart-button">
+          <button class="add-to-cart-button" mat-raised-button color="accent"
+            aria-label="Icon button with a cart one icon" (click)="addToCart()">
+            <div class="product-detail-button-content">
+              <div class="product-detail-button-content-text">Add to Cart</div>
+              <mat-icon>add_shopping_cart</mat-icon>
+            </div>
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>
