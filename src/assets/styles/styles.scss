@@ -269,10 +269,51 @@ td:last-child {
   align-items: center;
 }
 
+.form-stepper-button {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
 .field {
   padding-bottom: 10px;
 }
 
 .form-button {
   width: 25%;
+}
+
+.file-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.stepper-final-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+}
+
+.check-icon {
+  color: green;
+}
+// style="padding-left: 10px; font-size: large; font-weight: 500"
+
+.final-message {
+  font-size: large;
+  font-weight: bold;
+}
+
+.final-message-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

@@ -5,44 +5,44 @@
     </div>
     <form [formGroup]="addressForm" (ngSubmit)="submitAddress(addressForm)" novalidate>
       <div class="form-fields">
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>Country</mat-label>
           <mat-select formControlName="country">
             <mat-option required value="Hungary">Hungary</mat-option>
           </mat-select>
           <mat-error>Please choose a country!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>Region</mat-label>
           <input matInput type="text" formControlName="region" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid region!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>City</mat-label>
           <input matInput type="text" formControlName="city" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid city!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>ZIP Code</mat-label>
           <input matInput type="text" formControlName="zip" required />
           <mat-hint>Valid format: 1234</mat-hint>
           <mat-error>Please provide a valid ZIP Code!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>Street</mat-label>
           <input matInput type="text" formControlName="street" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid street!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <mat-label>Street number</mat-label>
           <input matInput type="text" formControlName="street_number" required />
           <!-- <mat-hint>Megfelelő formátum: nev@domain.hu</mat-hint> -->
           <mat-error>Please provide a valid street number!</mat-error>
         </mat-form-field>
-        <mat-form-field class="field">
+        <mat-form-field appearance="fill" class="field">
           <span matPrefix>+36</span>
           <mat-label>Phone number</mat-label>
           <input matInput type="text" formControlName="phone" required />
