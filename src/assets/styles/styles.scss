@@ -62,6 +62,23 @@ a {
   justify-items: center;
 }
 
+.location-icon {
+  position: relative;
+  bottom: 7px;
+}
+
+.phone-icon {
+  position: relative;
+  bottom: 7px;
+  right: 2px;
+}
+
+.mail-icon {
+  position: relative;
+  bottom: 4px;
+  right: 3px;
+}
+
 .categories {
   display: grid;
   grid-template-columns: 1fr;
