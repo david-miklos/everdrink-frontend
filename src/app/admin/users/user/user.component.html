@@ -1,41 +1,38 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="content">
-  <mat-expansion-panel style="background-color: #efefef; width: 95%">
-    <!-- #enddocregion hide-toggle -->
+<div class="panel">
+  <mat-expansion-panel class="user-panel">
     <mat-expansion-panel-header>
-      <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
-        <div>
-          <span style="font-weight: 500; font-size: medium">ID: </span>
-          <span>{{ user.id }}</span>
-        </div>
-        <div fxFlexOffset="3">
-          <span style="font-weight: 500; font-size: medium">E-mail: </span>
-          <span>{{ user.email }}</span>
-        </div>
-      </mat-panel-title>
-      <mat-panel-description>
-        <div>
-          <span>Guest</span>
-        </div>
-      </mat-panel-description>
+      <div class="panel-header">
+
+        <mat-panel-title>
+          <div class="panel-body">
+            <div class="panel-row">
+              <div class="panel-bold">ID:</div>
+              <div>{{ user.id }}</div>
+            </div>
+            <div class="panel-row">
+              <div class="panel-bold">E-mail:</div>
+              <div>{{ user.email }}</div>
+            </div>
+          </div>
+        </mat-panel-title>
+
+        <mat-panel-description>
+          <div class="panel-row">
+            <div>{{ user.role }}</div>
+          </div>
+        </mat-panel-description>
+
+      </div>
     </mat-expansion-panel-header>
 
-    <div fxLayout="row" fxLayoutAlign="center center" class="image">
-      <img style="width: 700px; height: 800px" src="{{ imagePath }}" alt="" />
-    </div>
 
-    <div style="padding-top: 20px;" fxFill fxLayout="row" fxLayoutAlign="center center">
-      <div  style="width: 30%;">
-        <button
-          fxFill
-          type="button"
-          mat-raised-button
-          color="primary"
-          (click)="approve()"
-        >
-          Approve
-          <mat-icon>check</mat-icon>
-        </button>
-      </div>
+    <div class="panel-image-container"><img class="panel-image" src="{{ imagePath }}" alt="" /></div>
+
+    <div class="panel-approve">
+      <button class="panel-approve-button" type="button" mat-raised-button (click)="approve()">
+        Approve
+        <mat-icon>check</mat-icon>
+      </button>
     </div>
   </mat-expansion-panel>
 </div>

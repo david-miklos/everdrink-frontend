@@ -1,77 +1,74 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="content">
-  <mat-expansion-panel style="background-color: #efefef; width: 95%">
-    <!-- #enddocregion hide-toggle -->
+<div class="panel">
+  <mat-expansion-panel class="order-panel">
     <mat-expansion-panel-header>
-      <mat-panel-title fxLayout="row" fxLayoutAlign="start none">
-        <div fxLayout="row" fxLayoutAlign=" center">
-          <span style="font-weight: 400; font-size: medium"
-            >Order ID:</span
-          >
-        </div>
-        <div fxLayout="row" fxLayoutAlign=" center" fxFlexOffset="3">
-          <span>{{ checkout.id }}</span>
+
+      <mat-panel-title>
+        <div class="panel-body">
+          <div class="panel-row">
+            <div class="panel-bold">Order ID:</div>
+            <div>{{ checkout.id }}</div>
+          </div>
         </div>
       </mat-panel-title>
+
       <mat-panel-description>
-        <div>
+        <div class="panel-row">
           <div *ngIf="checkout.shipping === 'DELIVERY'; else elseBlock">
             Delivery
           </div>
           <ng-template #elseBlock>Personal reception</ng-template>
         </div>
       </mat-panel-description>
+
     </mat-expansion-panel-header>
 
-    <mat-card
-      class="panel-content"
-      fxLayout="row"
-      fxLayoutAlign="space-evenly center"
-      style="margin: 20px"
-    >
-      <div class="user">
-        <h2>User</h2>
-        <div
-          fxLayout="row"
-          fxLayoutAlign="center center"
-          class="product-details"
-        >
-          <div fxLayout="column" fxLayoutAlign="space-between start">
-            <div>
-              <strong>ID:</strong> <span> {{ checkout.user.id }}</span>
-            </div>
-            <div>
-              <strong>E-mail:</strong> <span> {{ checkout.user.email }}</span>
-            </div>
-          </div>
+    <mat-card>
+      <div class="user-info">
+        <div class="user-info-user">
+          <h2>User</h2>
+          <table class="user-info-table">
+            <tbody>
+              <tr>
+                <td>ID:</td>
+                <td>{{ checkout.user.id }}</td>
+              </tr>
+              <tr>
+                <td>E-mail:</td>
+                <td>{{ checkout.user.email }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div style="padding: 10px" class="address">
-        <h2>Delivery addess</h2>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <div fxLayout="column" fxLayoutAlign="space-around start">
-            <div>
-              <strong>Country:</strong
-              ><span> {{ checkout.address.country }}</span>
-            </div>
-            <div>
-              <strong>Region: </strong><span>{{ checkout.address.region }}</span>
-            </div>
-            <div>
-              <strong>City: </strong> <span>{{ checkout.address.city }}</span>
-            </div>
-            <div>
-              <strong>Street: </strong>
-              <span> {{ checkout.address.street }}</span>
-            </div>
-            <div>
-              <strong>Street number: </strong
-              ><span>{{ checkout.address.street_number }}</span>
-            </div>
-            <div>
-              <strong>Phone number: </strong
-              ><span>{{ checkout.address.phone }}</span>
-            </div>
-          </div>
+        <div class="user-info-address">
+          <h2>Delivery addess</h2>
+          <table class="user-address-table">
+            <tbody>
+              <tr>
+                <td>Country:</td>
+                <td>{{ checkout.address.country }}</td>
+              </tr>
+              <tr>
+                <td>Region:</td>
+                <td>{{ checkout.address.region }}</td>
+              </tr>
+              <tr>
+                <td>City:</td>
+                <td>{{ checkout.address.city }}</td>
+              </tr>
+              <tr>
+                <td>Street:</td>
+                <td>{{ checkout.address.street }}</td>
+              </tr>
+              <tr>
+                <td>Street number:</td>
+                <td>{{ checkout.address.street_number }}</td>
+              </tr>
+              <tr>
+                <td>Phone number:</td>
+                <td>{{ checkout.address.phone }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </mat-card>
@@ -81,13 +78,8 @@
       <app-orders [orders]="checkout.orders"></app-orders>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="center center" style="padding: 10px">
-      <button
-        type="button"
-        mat-raised-button
-        color="accent"
-        (click)="finalize()"
-      >
+    <div class="checkout-deliver">
+      <button class="checkout-deliver-button" type="button" mat-raised-button color="accent" (click)="finalize()">
         Delivered
       </button>
     </div>

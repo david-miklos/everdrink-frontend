@@ -1,119 +1,85 @@
-<div style="margin: 20px" class="card">
-  <mat-card fxLayout="column" fxLayoutAlign=" none">
-    <div>
+<div class="order">
+  <mat-card class="order-card">
+    <div class="order-card-header">
       <mat-card-header>
         <mat-card-title>Order</mat-card-title>
-        <mat-card-subtitle>Order detail</mat-card-subtitle>
+        <mat-card-subtitle>Order details</mat-card-subtitle>
       </mat-card-header>
     </div>
-    <div>
-      <div class="content">
-        <mat-card-content fxLayout="row" fxLayoutAlign="space-around none">
-          <div fxLayout="column" fxLayoutAlign="center center" class="image">
-            <div>
-              <h2>{{ order.product.brand }} {{ order.product.name }}</h2>
-            </div>
-            <div>
-              <img
-                mat-card-image
-                src="/assets/mockups/beer.mockup.jpg"
-                alt="Photo of a beer bottle"
-                style="width: 100px; height: 100px; margin-top: 5px"
-              />
-            </div>
-          </div>
-          <div
-            fxLayout="row"
-            fxLayoutAlign="center center"
-            class="product-details"
-          >
-            <div fxLayout="column" fxLayoutAlign="space-evenly start">
-              <div>
-                <strong>Type: </strong> <span> {{ order.product.type }}</span>
-              </div>
-              <div>
-                <strong>Alcohol content: </strong>
-                <span>{{ order.product.alcohol_content }}</span>
-              </div>
-              <div>
-                <strong>Packaging: </strong>
-                <span>{{ order.product.packaging }}</span>
-              </div>
-              <div>
-                <strong>Volume: </strong>
-                <span> {{ order.product.volume }}</span>
-              </div>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="center center" class="details">
-            <div fxLayout="column" fxLayoutAlign="space-evenly start">
-              <div>
-                <strong>Net price:</strong>
-                <span>
-                  {{ order.product.net_price * order.quantity | number }}
-                  Ft</span
-                >
-              </div>
-              <div>
-                <strong> VAT: </strong>
-                <span
-                  >{{ order.product.vat * order.quantity | number }} Ft</span
-                >
-              </div>
-              <div>
-                <strong>Gross price:</strong>
-                <span>
-                  {{ order.product.gross_price * order.quantity | number }}
-                  Ft</span
-                >
-              </div>
-              <div>
-                <strong>Wrappage net price:</strong>
-                <span>
-                  {{
-                    order.product.wrappage_net_price * order.quantity | number
-                  }}
-                  Ft</span
-                >
-              </div>
-              <div>
-                <strong>Wrappage gross price:</strong>
-                <span>
-                  {{
-                    order.product.wrappage_gross_price * order.quantity | number
-                  }}
-                  Ft</span
-                >
-              </div>
-              <div>
-                <strong>Total:</strong>
-                <span>
-                  {{
-                    (order.product.gross_price +
-                      order.product.wrappage_gross_price) *
-                      order.quantity | number
-                  }}
-                  Ftt</span
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            style="padding-top: 5px;padding-left: 80px;"
-            fxLayout="row"
-            fxLayoutAlign="center"
-            class="quantity"
-          >
-            <div fxLayout="row" fxLayoutAlign="center center">
-              <span style="font-size: large;">Quantity: </span>
-              <span
-                style="font-size: 40px; padding-left: 10px"
-                >{{ order.quantity }}</span
-              >
-            </div>
-          </div>
-        </mat-card-content>
+    <div class="order-content">
+      <div class="order-content-product">
+        <h2 class="order-content-product-title">{{ order.product.brand }} {{ order.product.name }}</h2>
+        <img class="order-content-product-image" mat-card-image src="/assets/mockups/beer.mockup.jpg"
+          alt="Photo of a beer bottle" />
+      </div>
+      <div class="order-content-details">
+        <table class="summary-table">
+          <tbody>
+            <tr>
+              <td>Type:</td>
+              <td>{{ order.product.type }}</td>
+            </tr>
+            <tr>
+              <td>Alcohol content:</td>
+              <td>{{ order.product.alcohol_content }}</td>
+            </tr>
+            <tr>
+              <td>Packaging:</td>
+              <td>{{ order.product.packaging }}</td>
+            </tr>
+            <tr>
+              <td>Volume:</td>
+              <td>{{ order.product.volume }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="order-content-price">
+        <table class="summary-table">
+          <tbody>
+            <tr>
+              <td>Net price:</td>
+              <td> {{ order.product.net_price * order.quantity | number }} Ft</td>
+            </tr>
+            <tr>
+              <td>VAT:</td>
+              <td>{{ order.product.vat * order.quantity | number }} Ft</td>
+            </tr>
+            <tr>
+              <td>Gross price:</td>
+              <td>{{ order.product.gross_price * order.quantity | number }} Ft</td>
+            </tr>
+            <tr>
+              <td>Wrappage net price:</td>
+              <td>{{ order.product.wrappage_net_price * order.quantity | number }} Ft</td>
+            </tr>
+            <tr>
+              <td>Wrappage gross price:</td>
+              <td>{{ order.product.wrappage_gross_price * order.quantity | number}} Ft</td>
+            </tr>
+            <tr>
+              <td>Total:</td>
+              <td>{{ (order.product.gross_price + order.product.wrappage_gross_price) * order.quantity | number }} Ft
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="order-quantity-group">
+        <!-- <div class="order-quantity-group-">Quantity:</div>
+        <div>{{ order.quantity }}</div> -->
+
+        <table class="quantity-table">
+          <tbody>
+            <tr>
+              <td>Quantity:</td>
+              <td class="large-quantity">{{ order.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+
   </mat-card>
 </div>

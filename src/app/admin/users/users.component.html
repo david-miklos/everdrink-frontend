@@ -1,15 +1,12 @@
 <div *ngIf="(userService.users$ | async).length > 0; else elseBlock">
-  <div class="content">
+  <div class="panels">
     <mat-accordion>
-    <div *ngFor="let user of userService.users$ | async">
-      <app-user [user]="user"></app-user>
-    </div>
-  </mat-accordion>
+      <div *ngFor="let user of userService.users$ | async">
+        <app-user [user]="user"></app-user>
+      </div>
+    </mat-accordion>
   </div>
 </div>
 <ng-template #elseBlock>
   <app-not-found [msg]="errorMsg"></app-not-found>
 </ng-template>
-
-
-

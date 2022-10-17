@@ -1,5 +1,5 @@
 <div *ngIf="(checkoutService.checkouts$ | async).length > 0; else elseBlock">
-  <div class="content">
+  <div class="panels">
     <mat-accordion>
       <div *ngFor="let checkout of checkoutService.checkouts$ | async">
         <app-checkout [checkout]="checkout"></app-checkout>
