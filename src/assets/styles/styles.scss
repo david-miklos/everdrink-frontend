@@ -317,3 +317,22 @@ td:last-child {
   align-items: center;
   justify-content: center;
 }
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.not-found-card {
+  background-color: #efefef;
+  word-wrap: break-word;
+}
+
+.not-found-message {
+  font-size: x-large;
+  font-weight: bold;
+  padding: 50px;
+}
