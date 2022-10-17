@@ -1,19 +1,17 @@
 <div *ngIf="(cartService.count$ | async) > 0; else elseBlock">
-  <div class="card">
-    <mat-card style="background-color: #efefef" fxLayout="column" fxLayoutAlign="space-evenly center"
-      class="product-card">
-      <mat-card-header fxLayout="row" fxLayoutAlign="center center" fxFill>
-        <mat-card-title style="padding-top: 5px; ">CART</mat-card-title>
-        <!-- <mat-card-subtitle>Kosár adatok</mat-card-subtitle> -->
-      </mat-card-header>
-      <mat-card-content fxFill>
-        <div style="margin-top: 20px">
+  <div class="cart">
+    <mat-card class="cart-card">
+      <div class="cart-card-header">
+        <mat-card-title>CART</mat-card-title>
+      </div>
+      <mat-card-content>
+        <div class="orders-in-cart">
           <app-orders-in-cart></app-orders-in-cart>
         </div>
       </mat-card-content>
-      <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxFill>
-        <div>
-          <mat-form-field appearance="fill" style="margin-top: 20px">
+      <mat-card-actions>
+        <div class="cart-delivery-form">
+          <mat-form-field appearance="fill">
             <mat-label>Choose delivery option</mat-label>
             <mat-select [(value)]="chosenShipping">
               <mat-option value="delivery">Delivery</mat-option>
@@ -21,31 +19,24 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div style="padding: 30px" class="addresses">
-          <div fxLayout="row" fxLayoutAlign="center center" style="padding-bottom: 30px">
-            <label id="example-radio-group-label">Please choose your delivery address:</label>
-          </div>
+        <div class="addresses-in-cart">
+          <label id="example-radio-group-label">Please choose your delivery address:</label>
           <div *ngIf="chosenShipping === 'delivery'; else elseBlock">
-            <div>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                [(ngModel)]="chosenAddress">
-                <mat-radio-button style="padding: 5px" color="primary" class="example-radio-button"
-                  *ngFor="let address of addressService.userAddresses" [value]="address">
-                  <div fxLayout="row" fxLayoutAlign="space-around center">
-                    <div style="padding-left: 20px" fxLayout="column" fxLayoutAlign="space-around start">
-                      <span>Country: {{ address.country }}</span>
-                      <span>Region: {{ address.region }}</span>
-                      <span>City: {{ address.city }}</span>
-                      <span>Street: {{ address.street }}</span>
-                      <span>Street number: {{ address.street_number }}</span>
-                      <span>Phone number: {{ address.phone }}</span>
-                    </div>
-                  </div>
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-            <!-- total -->
-            <div fxLayout="row" fxLayoutAlign="center center" class="total" style="margin-top: 40px">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+              [(ngModel)]="chosenAddress">
+              <mat-radio-button color="primary" class="example-radio-button"
+                *ngFor="let address of addressService.userAddresses" [value]="address">
+                <div class="address-in-cart">
+                  <span>Country: {{ address.country }}</span>
+                  <span>Region: {{ address.region }}</span>
+                  <span>City: {{ address.city }}</span>
+                  <span>Street: {{ address.street }}</span>
+                  <span>Street number: {{ address.street_number }}</span>
+                  <span>Phone number: {{ address.phone }}</span>
+                </div>
+              </mat-radio-button>
+            </mat-radio-group>
+            <div class="total-in-cart">
               <h2>TOTAL: {{ this.cartService.total$ | async | number }} Ft</h2>
             </div>
           </div>
@@ -53,23 +44,21 @@
             <div>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                 [(ngModel)]="chosenAddress">
-                <mat-radio-button style="padding: 5px" class="example-radio-button" color="primary"
+                <mat-radio-button class="example-radio-button" color="primary"
                   *ngFor="let address of addressService.adminAddresses" [value]="address">
-                  <div fxLayout="row" fxLayoutAlign="space-around center">
-                    <div style="padding-left: 20px" fxLayout="column" fxLayoutAlign="space-around start">
-                      <span>Country: {{ address.country }}</span>
-                      <span>Region: {{ address.region }}</span>
-                      <span>City: {{ address.city }}</span>
-                      <span>Street: {{ address.street }}</span>
-                      <span>Street number: {{ address.street_number }}</span>
-                      <span>Phone number: {{ address.phone }}</span>
-                    </div>
+                  <div class="address-in-cart">
+                    <span>Country: {{ address.country }}</span>
+                    <span>Region: {{ address.region }}</span>
+                    <span>City: {{ address.city }}</span>
+                    <span>Street: {{ address.street }}</span>
+                    <span>Street number: {{ address.street_number }}</span>
+                    <span>Phone number: {{ address.phone }}</span>
                   </div>
                 </mat-radio-button>
               </mat-radio-group>
             </div>
-            <!-- total -->
-            <div class="total" style="margin-top: 30px">
+
+            <div class="total-in-cart">
               <h2>
                 TOTAL:
                 {{
@@ -81,17 +70,11 @@
             </div>
           </ng-template>
         </div>
-
-        <div fxLayout="row" fxLayoutAlign="center center" class="button" style="margin-top: 20px; padding-bottom: 20px;"
-          fxFill class="checkout">
-          <div style="width: 30%; height: 50px;" class="button">
-            <button fxFill mat-raised-button color="primary" [disabled]="!(isLoggedIn$ | async)" (click)="checkout()">
-              <span style="font-size: larger;">
-                Confirm Order
-              </span>
-
-            </button>
-          </div>
+        <div class="checkout">
+          <button class="checkout-button" mat-raised-button color="primary" [disabled]="!(isLoggedIn$ | async)"
+            (click)="checkout()">
+            <div class="confirm-order">Confirm Order</div>
+          </button>
         </div>
       </mat-card-actions>
     </mat-card>
