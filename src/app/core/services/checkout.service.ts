@@ -85,7 +85,7 @@ export class CheckoutService {
       `Bearer ${this.token}`
     );
     const checkoutReq = {
-      shipping: chosenShipping,
+      shipping: chosenShipping.toUpperCase(),
       addressId: chosenAddressId,
     };
     this.http
